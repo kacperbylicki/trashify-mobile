@@ -64,7 +64,7 @@ class AuthenticationService {
         guard let responseData = loginResponse.data, let accessToken = responseData.accessToken, let refreshToken = responseData.refreshToken else {
             throw AuthenticationError.custom(message: (loginResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
         }
-
+        
         return (accessToken: accessToken, refreshToken: refreshToken)
     }
     
