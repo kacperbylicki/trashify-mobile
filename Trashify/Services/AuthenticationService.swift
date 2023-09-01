@@ -45,7 +45,7 @@ struct RegisterResponse: Decodable {
 }
 
 class AuthenticationService {
-    let baseURL = "http://localhost:50010/api/v1/accounts"
+    let baseURL = ProcessInfo.processInfo.environment["BASE_URL"] ?? ""
     
     func login(email: String, password: String) async throws -> (accessToken: String, refreshToken: String) {
         guard let url = URL(string: "\(baseURL)/login") else {
@@ -64,7 +64,7 @@ class AuthenticationService {
         guard let responseData = loginResponse.data, let accessToken = responseData.accessToken, let refreshToken = responseData.refreshToken else {
             throw AuthenticationError.custom(message: (loginResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
         }
-
+        
         return (accessToken: accessToken, refreshToken: refreshToken)
     }
     
