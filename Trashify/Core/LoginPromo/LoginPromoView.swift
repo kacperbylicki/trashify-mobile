@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginPromoView: View {
+    @Binding var isLoggedIn: Bool
     @State private var isShowingSignUp = false
     @State private var isShowingLogin = false
     
@@ -39,7 +40,7 @@ struct LoginPromoView: View {
                 VStack(alignment: .leading, spacing: 5) {
                     HStack {
                         Spacer()
-                        NavigationLink(destination: RegisterView(), isActive: $isShowingSignUp) {
+                        NavigationLink(destination: RegisterView(isLoggedIn: $isLoggedIn), isActive: $isShowingSignUp) {
                             Button(action: {
                                 isShowingSignUp = true
                             }) {
@@ -60,7 +61,7 @@ struct LoginPromoView: View {
                             Text("Already have an account?")
                                 .font(.footnote)
                                 .foregroundColor(.white)
-                            NavigationLink(destination: LoginView()) {
+                            NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn)) {
                                 Text("Login")
                                     .font(.footnote)
                                     .foregroundColor(.white)
@@ -85,7 +86,9 @@ struct LoginPromoView: View {
 
 
 struct LoginPromoView_Previews: PreviewProvider {
+    @State static private var isLoggedIn = false
+    
     static var previews: some View {
-        LoginPromoView()
+        LoginPromoView(isLoggedIn: $isLoggedIn)
     }
 }

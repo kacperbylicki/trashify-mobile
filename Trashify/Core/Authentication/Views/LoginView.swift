@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @Binding var isLoggedIn: Bool
     @EnvironmentObject var loginViewModel: LoginViewModel
     @State private var loginResult: Result<Void, LoginError>?
     @State private var showAlert = false
@@ -46,10 +47,13 @@ struct LoginView: View {
                         Task {
                             let result = await loginViewModel.login()
                             switch result {
+                            case .success(_):
+                                isLoggedIn = true
                             case .failure(let error):
-                                showAlert = true
-                                alertMessage = error.errorDescription ?? "Unknown Error"
-                            default: break
+                                if !isLoggedIn {
+                                    showAlert = true
+                                    alertMessage = error.errorDescription ?? "Unknown Error"
+                                }
                             }
                             loginResult = result
                         }
@@ -81,7 +85,7 @@ struct LoginView: View {
                     Text("Don't have an account?")
                         .font(.footnote)
                         .foregroundColor(.gray)
-                    NavigationLink(destination: RegisterView()) {
+                    NavigationLink(destination: RegisterView(isLoggedIn: $isLoggedIn)) {
                         Text("Register")
                             .font(.footnote)
                             .foregroundColor(Color(red: 48/255, green: 112/255, blue: 109/255))
@@ -96,17 +100,14 @@ struct LoginView: View {
         }
         .padding()
         .navigationBarHidden(true)
-        .background(
-            NavigationLink("Login Screen",destination: RegisterView())
-                .hidden()
-        )
-        .navigationBarBackButtonHidden(true)
     }
 }
-
 
 struct LoginView_Previews: PreviewProvider {
+    @State static private var isLoggedIn = false
+    
     static var previews: some View {
-        LoginView()
+        LoginView(isLoggedIn: $isLoggedIn)
     }
 }
+

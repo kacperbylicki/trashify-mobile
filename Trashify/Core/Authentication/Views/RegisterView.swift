@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
+    @Binding var isLoggedIn: Bool
     @StateObject private var registerViewModel = RegisterViewModel()
     @State private var registerResult: Result<Void, RegisterError>?
     @State private var showAlert = false
@@ -81,7 +82,7 @@ struct RegisterView: View {
                     Text("Already have an account?")
                         .font(.footnote)
                         .foregroundColor(.gray)
-                    NavigationLink(destination: LoginView()) {
+                    NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn)) {
                         Text("Login")
                             .font(.footnote)
                             .foregroundColor(Color(red: 48/255, green: 112/255, blue: 109/255))
@@ -107,7 +108,9 @@ struct RegisterView: View {
 }
 
 struct RegisterView_Previews: PreviewProvider {
+    @State static private var isLoggedIn = false
+    
     static var previews: some View {
-        RegisterView()
+        RegisterView(isLoggedIn: $isLoggedIn)
     }
 }

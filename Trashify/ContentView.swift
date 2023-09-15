@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isLoggedIn = false
+    
     var body: some View {
         NavigationView {
-            LoginPromoView()
+            if(isLoggedIn) {
+                ContentAfterLoggedInView()
+            } else {
+                LoginPromoView(isLoggedIn: $isLoggedIn)
+            }
         }
     }
 }

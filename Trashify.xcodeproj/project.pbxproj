@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883145952AB4DAAC00F6A15B /* PersonTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883145942AB4DAAC00F6A15B /* PersonTabView.swift */; };
+		883145992AB4E56900F6A15B /* ContentAfterLoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883145982AB4E56900F6A15B /* ContentAfterLoggedInView.swift */; };
+		8832A4042AAC9E0000FC348C /* BottomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8832A4032AAC9E0000FC348C /* BottomNavigationView.swift */; };
 		885B254D2A910838007D3A54 /* TrashifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B254C2A910838007D3A54 /* TrashifyApp.swift */; };
 		885B254F2A910838007D3A54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B254E2A910838007D3A54 /* ContentView.swift */; };
 		885B25512A910838007D3A54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885B25502A910838007D3A54 /* Assets.xcassets */; };
@@ -18,9 +21,13 @@
 		885B256D2A911C58007D3A54 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B256C2A911C58007D3A54 /* RegisterViewModel.swift */; };
 		885B256F2A911C84007D3A54 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B256E2A911C84007D3A54 /* RegisterView.swift */; };
 		885B25752A912960007D3A54 /* LoginPromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B25742A912960007D3A54 /* LoginPromoView.swift */; };
+		8883659F2AACB23000B835C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883659E2AACB23000B835C5 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		883145942AB4DAAC00F6A15B /* PersonTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTabView.swift; sourceTree = "<group>"; };
+		883145982AB4E56900F6A15B /* ContentAfterLoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAfterLoggedInView.swift; sourceTree = "<group>"; };
+		8832A4032AAC9E0000FC348C /* BottomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigationView.swift; sourceTree = "<group>"; };
 		885B25492A910838007D3A54 /* Trashify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trashify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885B254C2A910838007D3A54 /* TrashifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashifyApp.swift; sourceTree = "<group>"; };
 		885B254E2A910838007D3A54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +40,7 @@
 		885B256C2A911C58007D3A54 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		885B256E2A911C84007D3A54 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		885B25742A912960007D3A54 /* LoginPromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPromoView.swift; sourceTree = "<group>"; };
+		8883659E2AACB23000B835C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		883145922AB4DA8000F6A15B /* PersonTab */ = {
+			isa = PBXGroup;
+			children = (
+				883145932AB4DA9300F6A15B /* Views */,
+			);
+			path = PersonTab;
+			sourceTree = "<group>";
+		};
+		883145932AB4DA9300F6A15B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				883145942AB4DAAC00F6A15B /* PersonTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		883145962AB4E54600F6A15B /* ContentAfterLoggedIn */ = {
+			isa = PBXGroup;
+			children = (
+				883145972AB4E55300F6A15B /* Views */,
+			);
+			path = ContentAfterLoggedIn;
+			sourceTree = "<group>";
+		};
+		883145972AB4E55300F6A15B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				883145982AB4E56900F6A15B /* ContentAfterLoggedInView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8832A4012AAC9B3C00FC348C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				8832A4022AAC9B4E00FC348C /* Views */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		8832A4022AAC9B4E00FC348C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8832A4032AAC9E0000FC348C /* BottomNavigationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		885B25402A910838007D3A54 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +151,10 @@
 		885B255C2A9109C5007D3A54 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				883145962AB4E54600F6A15B /* ContentAfterLoggedIn */,
+				883145922AB4DA8000F6A15B /* PersonTab */,
+				8883659C2AACB21500B835C5 /* Home */,
+				8832A4012AAC9B3C00FC348C /* Navigation */,
 				885B25732A912945007D3A54 /* LoginPromo */,
 				885B255E2A910BAD007D3A54 /* Authentication */,
 			);
@@ -142,6 +202,22 @@
 				885B25742A912960007D3A54 /* LoginPromoView.swift */,
 			);
 			path = LoginPromo;
+			sourceTree = "<group>";
+		};
+		8883659C2AACB21500B835C5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8883659D2AACB21C00B835C5 /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8883659D2AACB21C00B835C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8883659E2AACB23000B835C5 /* HomeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,10 +293,14 @@
 				885B25662A910D44007D3A54 /* LoginViewModel.swift in Sources */,
 				885B25622A910C21007D3A54 /* LoginView.swift in Sources */,
 				885B25752A912960007D3A54 /* LoginPromoView.swift in Sources */,
+				883145952AB4DAAC00F6A15B /* PersonTabView.swift in Sources */,
 				885B256D2A911C58007D3A54 /* RegisterViewModel.swift in Sources */,
 				885B254F2A910838007D3A54 /* ContentView.swift in Sources */,
+				8883659F2AACB23000B835C5 /* HomeView.swift in Sources */,
 				885B256B2A911133007D3A54 /* AuthenticationService.swift in Sources */,
 				885B256F2A911C84007D3A54 /* RegisterView.swift in Sources */,
+				883145992AB4E56900F6A15B /* ContentAfterLoggedInView.swift in Sources */,
+				8832A4042AAC9E0000FC348C /* BottomNavigationView.swift in Sources */,
 				885B25692A9110F9007D3A54 /* KeychainHelper.swift in Sources */,
 				885B254D2A910838007D3A54 /* TrashifyApp.swift in Sources */,
 			);
@@ -351,7 +431,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trashify/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6K3N9379CW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -380,7 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trashify/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6K3N9379CW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
