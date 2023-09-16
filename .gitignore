@@ -48,3 +48,4 @@ fastlane/test_output
 .Trashes
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
+.idea/
