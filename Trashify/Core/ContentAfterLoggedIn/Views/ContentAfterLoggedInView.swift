@@ -12,13 +12,18 @@ struct ContentAfterLoggedInView: View {
     @State private var isPlusSheetPresented = false
     
     var body: some View {
-        VStack {
+        ZStack {
             if selectedTab == .house {
                 HomeView()
+                    .edgesIgnoringSafeArea(.bottom)
             } else if selectedTab == .person {
                 PersonTabView()
             }
-            BottomNavigationView(selectedTab: $selectedTab, isPlusSheetPresented: $isPlusSheetPresented)
+
+            VStack {
+                Spacer()
+                BottomNavigationView(selectedTab: $selectedTab, isPlusSheetPresented: $isPlusSheetPresented)
+            }
         }
         .sheet(isPresented: $isPlusSheetPresented) {
             Text("Plus")
