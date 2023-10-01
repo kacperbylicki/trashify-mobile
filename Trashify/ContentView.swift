@@ -18,6 +18,7 @@ struct ContentView: View {
                 LoginPromoView(isLoggedIn: $isLoggedIn)
             }
         }
+        .accentColor(AppColors.darkerGreen)
     }
 }
 

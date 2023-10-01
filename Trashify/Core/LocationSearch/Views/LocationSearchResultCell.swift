@@ -13,7 +13,7 @@ struct LocationSearchResultCell: View {
 
     var body: some View {
         HStack {
-            Image(systemName: "mappin.circle.fill").resizable().foregroundColor(.blue).accentColor(.white).frame(width: 30, height: 30).padding(.horizontal)
+            Image(systemName: "mappin.circle.fill").resizable().foregroundColor(AppColors.originalGreen).accentColor(.white).frame(width: 30, height: 30).padding(.horizontal)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title).font(.body)

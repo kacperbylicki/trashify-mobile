@@ -24,7 +24,7 @@ struct LocationSearchView: View {
                     .frame(width: UIScreen.main.bounds.width - 64, height: 50)
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(50)
-                    .shadow(color: .blue.opacity(0.1), radius: 10, x: 0, y: 10)
+                    .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
                     .padding(.top, 25)
 
             ScrollView {

@@ -67,7 +67,7 @@ struct RegisterView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(width: 220, height: 60)
-                            .background(Color(red: 48/255, green: 112/255, blue: 109/255))
+                            .background(AppColors.darkerGreen)
                             .cornerRadius(15.0)
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -82,10 +82,10 @@ struct RegisterView: View {
                     Text("Already have an account?")
                         .font(.footnote)
                         .foregroundColor(.gray)
-                    NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn)) {
+                    NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn).accentColor(AppColors.originalGreen)) {
                         Text("Login")
                             .font(.footnote)
-                            .foregroundColor(Color(red: 48/255, green: 112/255, blue: 109/255))
+                            .foregroundColor(AppColors.darkerGreen)
                             .fontWeight(.semibold)
                     }
                 }

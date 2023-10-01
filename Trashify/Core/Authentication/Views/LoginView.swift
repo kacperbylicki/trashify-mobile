@@ -63,7 +63,7 @@ struct LoginView: View {
                             .foregroundColor(.white)
                             .padding()
                             .frame(width: 220, height: 60)
-                            .background(Color(red: 48/255, green: 112/255, blue: 109/255))
+                            .background(AppColors.darkerGreen)
                             .cornerRadius(15.0)
                     }
                     .alert(isPresented: $showAlert) {
@@ -88,7 +88,7 @@ struct LoginView: View {
                     NavigationLink(destination: RegisterView(isLoggedIn: $isLoggedIn)) {
                         Text("Register")
                             .font(.footnote)
-                            .foregroundColor(Color(red: 48/255, green: 112/255, blue: 109/255))
+                            .foregroundColor(AppColors.darkerGreen)
                             .fontWeight(.semibold)
                     }
                 }

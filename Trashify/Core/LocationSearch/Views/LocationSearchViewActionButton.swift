@@ -19,11 +19,11 @@ struct LocationSearchViewActionButton: View {
             Image(systemName: "arrow.left")
                     .font(.system(size: 15))
                     .fontWeight(.bold)
-                    .foregroundColor(.blue)
+                    .foregroundColor(AppColors.originalGreen)
                     .padding()
                     .background(.white)
                     .clipShape(Circle())
-                    .shadow(color: .blue.opacity(0.1), radius: 10, x: 0, y: 10)
+                    .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
         }
                 .frame(maxWidth: .infinity, alignment: .leading)
     }

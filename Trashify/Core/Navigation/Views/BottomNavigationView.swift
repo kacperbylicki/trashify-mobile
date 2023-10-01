@@ -29,7 +29,7 @@ struct BottomNavigationView: View {
         .frame(width: UIScreen.main.bounds.width - 64, height: 50)
         .background(Color.white)
         .cornerRadius(20)
-        .shadow(color: .blue.opacity(0.1), radius: 10, x: 0, y: 10)
+        .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
     }
 }
 
@@ -41,7 +41,7 @@ struct TabButton: View {
     var body: some View {
         Image(systemName: tab == selectedTab ? tab.rawValue + ".fill" : tab.rawValue)
             .scaleEffect(tab == selectedTab ? 1.25 : 1.0)
-            .foregroundColor(tab == selectedTab ? Color(#colorLiteral(red: 0.372549027, green: 0.721568644, blue: 0.494117647, alpha: 1)) : .gray)
+            .foregroundColor(tab == selectedTab ? AppColors.originalGreen : .gray)
             .font(.system(size: 20))
             .onTapGesture {
                 withAnimation(.easeIn(duration: 0.1)) {

@@ -46,7 +46,7 @@ struct LoginPromoView: View {
                             }) {
                                 Text("Join Now")
                                     .font(.headline)
-                                    .foregroundColor(Color(red: 48/255, green: 112/255, blue: 109/255))
+                                    .foregroundColor(AppColors.darkerGreen)
                                     .padding()
                                     .frame(width: 220, height: 60)
                                     .background(.white)
@@ -78,7 +78,7 @@ struct LoginPromoView: View {
             }
             .padding()
             .frame(width: geometry.size.width, height: geometry.size.height)
-            .background(Color(red: 48/255, green: 112/255, blue: 109/255))
+            .background(AppColors.darkerGreen)
         }
         .edgesIgnoringSafeArea(.all)
     }

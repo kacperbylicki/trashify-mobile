@@ -12,7 +12,7 @@ struct LocationSearchActivationView: View {
         HStack {
             Circle()
                     .frame(width: 10, height: 10)
-                    .foregroundColor(.blue)
+                    .foregroundColor(AppColors.originalGreen)
                     .padding(.horizontal)
 
             Text("What location are you looking for?").foregroundColor(Color(.darkGray)).font(.system(size: 15))
@@ -22,7 +22,7 @@ struct LocationSearchActivationView: View {
                 .frame(width: UIScreen.main.bounds.width - 64, height: 50)
                 .background(Color.white)
                 .cornerRadius(50)
-                .shadow(color: .blue.opacity(0.1), radius: 10, x: 0, y: 10)
+                .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
                 .padding(.top, 25)
     }
 }
