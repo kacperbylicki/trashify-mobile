@@ -77,10 +77,14 @@ class LoginViewModel: ObservableObject {
             authenticationStatus = true
             return .success(())
         } catch AuthenticationError.custom(let errorMessage) {
-            authenticationStatus = false
+            DispatchQueue.main.async {
+                self.authenticationStatus = false
+            }
             return .failure(.loginError(errorMessage))
         } catch {
-            authenticationStatus = false
+            DispatchQueue.main.async {
+                self.authenticationStatus = false
+            }
             return .failure(.unknownError(error))
         }
     }

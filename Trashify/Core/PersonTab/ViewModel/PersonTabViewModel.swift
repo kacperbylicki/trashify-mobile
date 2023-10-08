@@ -45,6 +45,7 @@ class PersonTabViewModel: ObservableObject {
         
         Task {
             do {
+                self.errorMessage = ""
                 try await authService.updateEmail(accessToken: accessToken, newEmail: newEmail)
                 DispatchQueue.main.async {
                     self.updateSuccess = true
@@ -68,6 +69,7 @@ class PersonTabViewModel: ObservableObject {
         
         Task {
             do {
+                self.errorMessage = ""
                 try await authService.updateUsername(accessToken: accessToken, newUsername: newUsername)
                 DispatchQueue.main.async {
                     self.updateSuccess = true

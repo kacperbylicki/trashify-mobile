@@ -36,9 +36,9 @@ struct EditSheetView: View {
                 .onChange(of: text) { newValue in
                     switch updateType {
                     case .email:
-                        text = newValue
+                        personTabViewModel.newEmail = newValue
                     case .username:
-                        text = newValue
+                        personTabViewModel.newUsername = newValue
                     }
                 }
 

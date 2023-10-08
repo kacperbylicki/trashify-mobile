@@ -7,8 +7,15 @@
 
 import Foundation
 
-enum AuthenticationError: Error {
+enum AuthenticationError: Error, LocalizedError {
     case custom(message: String)
+
+    var errorDescription: String? {
+        switch self {
+        case .custom(let message):
+            return message
+        }
+    }
 }
 
 struct LoginRequest: Codable {
@@ -65,13 +72,13 @@ struct UpdateEmailRequest: Codable {
 
 struct UpdateUsernameResponse: Decodable {
     let status: Int
-    let username: String
+    let username: String?
     let error: [String?]?
 }
 
 struct UpdateEmailResponse: Decodable {
     let status: Int
-    let email: String
+    let email: String?
     let error: [String?]?
 }
 
@@ -166,7 +173,6 @@ class AuthenticationService {
         request.httpBody = try JSONEncoder().encode(body)
 
         let (data, _) = try await URLSession.shared.data(for: request)
-
         let updateResponse = try JSONDecoder().decode(UpdateUsernameResponse.self, from: data)
 
         guard updateResponse.status == 200 else {

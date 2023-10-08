@@ -38,6 +38,8 @@ struct UserDataView: View {
                 }
                 Spacer()
                 Button(action: {
+                    personTabViewModel.errorMessage = ""
+                    personTabViewModel.newUsername = ""
                     isEditUsernamePresented = true
                 }) {
                     Text("Edit")
@@ -62,6 +64,8 @@ struct UserDataView: View {
                 }
                 Spacer()
                 Button(action: {
+                    personTabViewModel.errorMessage = ""
+                    personTabViewModel.newEmail = ""
                     isEditEmailPresented = true
                 }) {
                     Text("Edit")
