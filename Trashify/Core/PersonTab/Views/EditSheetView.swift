@@ -71,6 +71,11 @@ struct EditSheetView: View {
             Spacer()
         }
         .padding(.horizontal)
+        .alert(isPresented: $personTabViewModel.updateSuccess, content: {
+            Alert(title: Text(personTabViewModel.username + " updated"), message: Text("Updating successful"), dismissButton: .default(Text("OK")) {
+                isPresented = false
+            })
+        })
     }
 }
 
