@@ -17,7 +17,7 @@ struct ContentAfterLoggedInView: View {
                 HomeView()
                     .edgesIgnoringSafeArea(.bottom)
             } else if selectedTab == .person {
-                PersonTabView()
+                PersonTabView(selectedTab: $selectedTab)
             }
 
             VStack {

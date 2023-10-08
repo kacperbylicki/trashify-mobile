@@ -44,6 +44,37 @@ struct RegisterResponse: Decodable {
     let error: [String?]?
 }
 
+struct UserDetail: Decodable {
+    let email: String
+    let username: String
+}
+
+struct UserDetailResponse: Decodable {
+    let data: UserDetail?
+    let status: Int
+    let error: [String?]?
+}
+
+struct UpdateUsernameRequest: Codable {
+    let username: String
+}
+
+struct UpdateEmailRequest: Codable {
+    let email: String
+}
+
+struct UpdateUsernameResponse: Decodable {
+    let status: Int
+    let username: String
+    let error: [String?]?
+}
+
+struct UpdateEmailResponse: Decodable {
+    let status: Int
+    let email: String
+    let error: [String?]?
+}
+
 class AuthenticationService {
     let baseURL = ProcessInfo.processInfo.environment["BASE_URL"] ?? ""
     
@@ -64,7 +95,6 @@ class AuthenticationService {
         guard let responseData = loginResponse.data, let accessToken = responseData.accessToken, let refreshToken = responseData.refreshToken else {
             throw AuthenticationError.custom(message: (loginResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
         }
-        
         return (accessToken: accessToken, refreshToken: refreshToken)
     }
     
@@ -101,6 +131,66 @@ class AuthenticationService {
         
         guard registerResponse.status == 201 else {
             throw AuthenticationError.custom(message: (registerResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
+        }
+    }
+    
+    func fetchCurrentUserDetails(accessToken: String) async throws -> UserDetail {
+        guard let url = URL(string: "\(baseURL)/me") else {
+            throw AuthenticationError.custom(message: "URL is not correct")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let userDetailResponse = try JSONDecoder().decode(UserDetailResponse.self, from: data)
+        
+        guard let userDetail = userDetailResponse.data else {
+            throw AuthenticationError.custom(message: (userDetailResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
+        }
+        
+        return userDetail
+    }
+    
+    func updateUsername(accessToken: String, newUsername: String) async throws -> Void {
+        guard let url = URL(string: "\(baseURL)/username") else {
+            throw AuthenticationError.custom(message: "URL is not correct")
+        }
+
+        let body = UpdateUsernameRequest(username: newUsername)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try JSONEncoder().encode(body)
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+
+        let updateResponse = try JSONDecoder().decode(UpdateUsernameResponse.self, from: data)
+
+        guard updateResponse.status == 200 else {
+            throw AuthenticationError.custom(message: (updateResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
+        }
+    }
+
+    func updateEmail(accessToken: String, newEmail: String) async throws -> Void {
+        guard let url = URL(string: "\(baseURL)/email") else {
+            throw AuthenticationError.custom(message: "URL is not correct")
+        }
+        
+        let body = UpdateEmailRequest(email: newEmail)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try JSONEncoder().encode(body)
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let updateResponse = try JSONDecoder().decode(UpdateEmailResponse.self, from: data)
+        
+        guard updateResponse.status == 200 else {
+            throw AuthenticationError.custom(message: (updateResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
         }
     }
 }

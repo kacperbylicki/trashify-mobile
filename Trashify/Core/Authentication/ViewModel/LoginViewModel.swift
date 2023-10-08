@@ -35,6 +35,7 @@ class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var authenticationStatus: Bool = false
+    @Published var showLogoutAlert = false
     
     private let keychainHelper = KeychainHelper()
     private let authenticationService = AuthenticationService()
@@ -69,7 +70,9 @@ class LoginViewModel: ObservableObject {
         
         do {
             let tokens = try await authenticationService.login(email: email, password: password)
+            keychainHelper.delete("accessToken")
             keychainHelper.save("accessToken", data: tokens.accessToken)
+            keychainHelper.delete("refreshToken")
             keychainHelper.save("refreshToken", data: tokens.refreshToken)
             authenticationStatus = true
             return .success(())
@@ -90,6 +93,7 @@ class LoginViewModel: ObservableObject {
             keychainHelper.delete("accessToken")
             keychainHelper.delete("refreshToken")
             authenticationStatus = false
+            showLogoutAlert = true
         } catch {
             print(error)
             authenticationStatus = true

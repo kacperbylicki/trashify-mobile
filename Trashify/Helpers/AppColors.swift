@@ -12,6 +12,7 @@ struct AppColors {
     static let originalGreen = Color(hex: "#5FB87E")
     static let darkerGreen = Color(hex: "#3C8A56")
     static let lighterGreen = Color(hex: "#81D8A6")
+    static let lightGray = Color(hex: "#EAE9ED")
 }
 
 extension Color {

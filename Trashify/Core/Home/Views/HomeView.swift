@@ -14,6 +14,7 @@ struct HomeView: View {
         NavigationView {
             HomeContent()
         }
+        .accentColor(AppColors.darkerGreen)
     }
 
     func HomeContent() -> some View {
