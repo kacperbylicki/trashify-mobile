@@ -46,9 +46,19 @@ struct PersonTabView: View {
         
         .sheet(isPresented: $isEditUsernamePresented) {
             EditSheetView(isPresented: $isEditUsernamePresented, title: "Update your username", text: $personTabViewModel.newUsername, updateType: .username)
+                .alert(isPresented: $personTabViewModel.updateSuccess, content: {
+                    Alert(title: Text("Update Successful"), message: Text("Username has been successfully updated."), dismissButton: .default(Text("OK")) {
+                        isEditUsernamePresented = false
+                    })
+                })
         }
         .sheet(isPresented: $isEditEmailPresented) {
             EditSheetView(isPresented: $isEditEmailPresented, title: "Update your email", text: $personTabViewModel.newEmail, updateType: .email)
+                .alert(isPresented: $personTabViewModel.updateSuccess, content: {
+                    Alert(title: Text("Update Successful"), message: Text("Email address has been successfully updated."), dismissButton: .default(Text("OK")) {
+                        isEditEmailPresented = false
+                    })
+                })
         }
     }
 }

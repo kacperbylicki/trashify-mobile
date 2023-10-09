@@ -24,15 +24,16 @@ class PersonTabViewModel: ObservableObject {
     }
     
     private func validateEmail() -> Bool {
+        print("email")
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailTest.evaluate(with: email)
+        return emailTest.evaluate(with: newEmail)
     }
     
     private func validateUsername() -> Bool {
-        let usernameRegex = "^[a-zA-Z0-9]{3,20}$"
+        let usernameRegex = "^[a-zA-Z0-9]{6,64}$"
         let usernameTest = NSPredicate(format: "SELF MATCHES %@", usernameRegex)
-        return usernameTest.evaluate(with: username)
+        return usernameTest.evaluate(with: newUsername)
     }
     
     func updateEmail() {
@@ -62,7 +63,7 @@ class PersonTabViewModel: ObservableObject {
     func updateUsername() {
         if !validateUsername() {
             DispatchQueue.main.async {
-                self.errorMessage = "Invalid username format. Must be between 3 to 20 characters long and contain only alphanumeric characters."
+                self.errorMessage = "Invalid username format. Must be between 6 to 64 characters long and contain only alphanumeric characters."
             }
             return
         }
