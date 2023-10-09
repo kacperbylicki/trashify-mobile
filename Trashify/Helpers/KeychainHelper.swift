@@ -17,7 +17,6 @@ class KeychainHelper {
         
         let status = SecItemAdd(query as CFDictionary, nil)
         guard status == errSecSuccess else {
-            print("Keychain save error: \(status)")
             return
         }
     }
