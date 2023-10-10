@@ -17,6 +17,7 @@ struct EditSheetView: View {
     @Binding var text: String
     var updateType: UpdateType
     @EnvironmentObject var personTabViewModel: PersonTabViewModel
+    @EnvironmentObject var darkModeManager: DarkModeManager
     
     @State private var showError: Bool = false
 
@@ -25,6 +26,7 @@ struct EditSheetView: View {
             Text(title)
                 .bold()
                 .font(.system(size: 20))
+                .foregroundColor(Color.primary)
                 .padding(.bottom, 20)
                 .padding(.top, 30)
 
@@ -58,7 +60,7 @@ struct EditSheetView: View {
             }) {
                 Text("Save")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.white)
                     .padding()
                     .frame(width: 100, height: 40)
                     .background(AppColors.darkerGreen)

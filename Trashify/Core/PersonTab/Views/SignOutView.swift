@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SignOutView: View {
     @EnvironmentObject var viewModel: LoginViewModel
+    @EnvironmentObject var darkModeManager: DarkModeManager
     
     var body: some View {
         VStack() {
@@ -21,14 +22,14 @@ struct SignOutView: View {
                     Image(systemName: "rectangle.portrait.and.arrow.forward")
                     Text("Sign out")
                 }
-                .foregroundColor(.black)
+                .foregroundColor(Color.primary)
                 .padding()
                 Spacer()
             }
             
             Spacer()
         }
-        .background(.white)
+        .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20, corners: [.topLeft, .topRight])
         .edgesIgnoringSafeArea(.bottom)
     }

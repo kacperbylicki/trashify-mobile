@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LocationSearchViewActionButton: View {
+    @EnvironmentObject var darkModeManager: DarkModeManager
     @Binding var showLocationSearchView: Bool
 
     var body: some View {
@@ -21,7 +22,7 @@ struct LocationSearchViewActionButton: View {
                     .fontWeight(.bold)
                     .foregroundColor(AppColors.originalGreen)
                     .padding()
-                    .background(.white)
+                    .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                     .clipShape(Circle())
                     .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
         }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginPromoView: View {
+    @EnvironmentObject var darkModeManager: DarkModeManager
     @Binding var isLoggedIn: Bool
     @State private var isShowingSignUp = false
     @State private var isShowingLogin = false
@@ -27,11 +28,11 @@ struct LoginPromoView: View {
                     Text("Let's Get Started")
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                        .foregroundColor(.white)
+                        .foregroundColor(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                     
                     Text("Start segregating waste now and let's take care of our planet together!")
                         .font(.subheadline)
-                        .foregroundColor(.white)
+                        .foregroundColor(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                         .padding(.top, 10)
                 }
                 .padding(.bottom, 30)
@@ -49,7 +50,7 @@ struct LoginPromoView: View {
                                     .foregroundColor(AppColors.darkerGreen)
                                     .padding()
                                     .frame(width: 220, height: 60)
-                                    .background(.white)
+                                    .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                                     .cornerRadius(15.0)
                             }
                         }
@@ -60,11 +61,11 @@ struct LoginPromoView: View {
                         HStack {
                             Text("Already have an account?")
                                 .font(.footnote)
-                                .foregroundColor(.white)
+                                .foregroundColor(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                             NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn)) {
                                 Text("Login")
                                     .font(.footnote)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                                     .fontWeight(.semibold)
                             }
                         }

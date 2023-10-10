@@ -12,10 +12,11 @@ struct TrashifyApp: App {
     @StateObject var loginViewModel = LoginViewModel()
     @StateObject var locationViewModel = LocationSearchViewModel()
     @StateObject var personTabViewModel = PersonTabViewModel()
+    @StateObject var darkModeManager = DarkModeManager()
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(personTabViewModel)
+            ContentView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(personTabViewModel).environmentObject(darkModeManager)
         }
     }
 }

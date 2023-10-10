@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PersonTabView: View {
     @EnvironmentObject var personTabViewModel: PersonTabViewModel
+    @EnvironmentObject var darkModeManager: DarkModeManager
     @State private var username: String = "Username"
     @State private var isDarkMode: Bool = false
     @State private var isEditUsernamePresented = false
@@ -18,13 +19,14 @@ struct PersonTabView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.white.edgesIgnoringSafeArea(.all)
+                (darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
+                        .edgesIgnoringSafeArea(.all)
 
                 VStack {
                     Spacer(minLength: geometry.safeAreaInsets.top / 3)
                     PersonTabContent()
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                        .background(AppColors.lightGray)
+                        .background(darkModeManager.isDarkMode ? Color(.systemBackground) : AppColors.lightGray)
                 }
             }
         }
@@ -40,7 +42,7 @@ struct PersonTabView: View {
         VStack(spacing: 10) {
             PersonHeaderView(selectedTab: $selectedTab)
             UserDataView(isEditUsernamePresented: $isEditUsernamePresented, isEditEmailPresented: $isEditEmailPresented)
-            AppSettingsView(openAppSettings: openAppSettings, isDarkMode: $isDarkMode)
+            AppSettingsView(openAppSettings: openAppSettings)
             SignOutView()
         }
         

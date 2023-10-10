@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct LocationSearchActivationView: View {
+    @EnvironmentObject var darkModeManager: DarkModeManager
+    
     var body: some View {
         HStack {
             Circle()
-                    .frame(width: 10, height: 10)
-                    .foregroundColor(AppColors.originalGreen)
-                    .padding(.horizontal)
+                .frame(width: 10, height: 10)
+                .foregroundColor(AppColors.originalGreen)
+                .padding(.horizontal)
 
-            Text("What location are you looking for?").foregroundColor(Color(.darkGray)).font(.system(size: 15))
+            Text("What location are you looking for?").foregroundColor(darkModeManager.isDarkMode ? .gray : Color(.darkGray)).font(.system(size: 15))
 
             Spacer()
         }
                 .frame(width: UIScreen.main.bounds.width - 64, height: 50)
-                .background(Color.white)
+                .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                 .cornerRadius(50)
                 .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
                 .padding(.top, 25)

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AppSettingsView: View {
     var openAppSettings: () -> Void
-    @Binding var isDarkMode: Bool
+    @EnvironmentObject var darkModeManager: DarkModeManager
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack() {
@@ -17,6 +18,7 @@ struct AppSettingsView: View {
                 Text("App settings")
                     .bold()
                     .font(.system(size: 20))
+                    .foregroundColor(Color.primary)
                     .padding(.bottom, 20)
                     .padding(.top, 15)
                 Spacer()
@@ -28,7 +30,7 @@ struct AppSettingsView: View {
                     Image(systemName: "gearshape")
                     Text("Access settings")
                 }
-                .foregroundColor(.black)
+                .foregroundColor(Color.primary)
                 
                 Spacer()
             }
@@ -36,22 +38,24 @@ struct AppSettingsView: View {
             
             HStack {
                 Image(systemName: "moon.fill")
-                    .foregroundColor(isDarkMode ? .yellow : .gray)
-                Toggle("Dark mode", isOn: $isDarkMode)
+                    .foregroundColor((darkModeManager.isDarkMode ) ? .yellow : .gray)
+                Toggle("Dark mode", isOn: Binding(
+                    get: { darkModeManager.isDarkMode },
+                    set: { newValue in
+                        darkModeManager.isDarkMode = newValue
+                    }
+                ))
             }
             .padding(.horizontal)
             .padding(.bottom, 20)
         }
-        .background(.white)
+        .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20)
     }
 }
 
 struct AppSettingsView_Previews: PreviewProvider {
-    @State static var mockIsDarkMode: Bool = false
-    
     static var previews: some View {
-        AppSettingsView(openAppSettings: {
-        }, isDarkMode: $mockIsDarkMode)
+        AppSettingsView(openAppSettings: {})
     }
 }

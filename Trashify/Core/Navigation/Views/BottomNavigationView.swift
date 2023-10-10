@@ -27,7 +27,7 @@ struct BottomNavigationView: View {
         }
         .padding(.horizontal, 32)
         .frame(width: UIScreen.main.bounds.width - 64, height: 50)
-        .background(Color.white)
+        .background(Color(.systemBackground))
         .cornerRadius(20)
         .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
     }

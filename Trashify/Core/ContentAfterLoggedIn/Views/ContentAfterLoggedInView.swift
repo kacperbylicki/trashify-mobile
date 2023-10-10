@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentAfterLoggedInView: View {
+    @EnvironmentObject var darkModeManager: DarkModeManager
     @State private var selectedTab: Tab = .house
     @State private var isPlusSheetPresented = false
     
@@ -27,6 +28,7 @@ struct ContentAfterLoggedInView: View {
         }
         .sheet(isPresented: $isPlusSheetPresented) {
             Text("Plus")
+                .foregroundColor(darkModeManager.isDarkMode ?? false ? .white : .black)
         }
     }
 }

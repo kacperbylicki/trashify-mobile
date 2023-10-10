@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var isLoggedIn = false
     @EnvironmentObject var viewModel: LoginViewModel
+    @EnvironmentObject var darkModeManager: DarkModeManager
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {
@@ -19,6 +21,7 @@ struct ContentView: View {
                 LoginPromoView(isLoggedIn: $isLoggedIn)
             }
         }
+        .preferredColorScheme(darkModeManager.isDarkMode ?? (colorScheme == .dark) ? .dark : .light)
         .accentColor(AppColors.darkerGreen)
         .alert(isPresented: $viewModel.showLogoutAlert, content: {
             Alert(title: Text("Logged Out"), message: Text("You have been logged out successfully."), dismissButton: .default(Text("OK")) {

@@ -34,6 +34,7 @@
 		8864A25D2AB5CE1300E9F559 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25C2AB5CE1300E9F559 /* LocationSearchView.swift */; };
 		8864A25F2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25E2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift */; };
 		8864A2622AB5CEE800E9F559 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A2612AB5CEE800E9F559 /* LocationManager.swift */; };
+		88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88755D992AD5A9F700D43C85 /* DarkModeManager.swift */; };
 		8883659F2AACB23000B835C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883659E2AACB23000B835C5 /* HomeView.swift */; };
 		88E269202AB5C01C00EDA486 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */; };
 		88E269262AB5CC2A00EDA486 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */; };
@@ -68,6 +69,7 @@
 		8864A25C2AB5CE1300E9F559 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		8864A25E2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewActionButton.swift; sourceTree = "<group>"; };
 		8864A2612AB5CEE800E9F559 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		88755D992AD5A9F700D43C85 /* DarkModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeManager.swift; sourceTree = "<group>"; };
 		8883659E2AACB23000B835C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = SOURCE_ROOT; };
 		88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -240,6 +242,7 @@
 				885B25682A9110F9007D3A54 /* KeychainHelper.swift */,
 				8815E09E2AC07EA2003E2EAE /* AppColors.swift */,
 				8809D55E2AD06F6F00A2B5B4 /* CornerRoundingHelper.swift */,
+				88755D992AD5A9F700D43C85 /* DarkModeManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				881FDA1C2AD1B94D00363234 /* PersonHeaderView.swift in Sources */,
 				8815E09F2AC07EA2003E2EAE /* AppColors.swift in Sources */,
 				885B25692A9110F9007D3A54 /* KeychainHelper.swift in Sources */,
+				88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */,
 				885B254D2A910838007D3A54 /* TrashifyApp.swift in Sources */,
 				881FDA222AD1B98800363234 /* SignOutView.swift in Sources */,
 			);

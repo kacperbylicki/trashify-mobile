@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct LocationSearchView: View {
+    @EnvironmentObject var darkModeManager: DarkModeManager
     @State private var startLocationText = ""
     @Binding var showLocationSearchView: Bool
 
@@ -19,10 +20,10 @@ struct LocationSearchView: View {
             LocationSearchViewActionButton(showLocationSearchView: $showLocationSearchView).padding(.top, 50)
 
             HStack {
-                TextField("Location", text: $locationViewModel.searchFragment).frame(height: 50).background(Color(.systemGroupedBackground)).padding(.horizontal, 20).font(.system(size: 15))
+                TextField("Location", text: $locationViewModel.searchFragment).frame(height: 50).background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white).foregroundColor(darkModeManager.isDarkMode ? .gray : Color(.darkGray)).padding(.horizontal, 20).font(.system(size: 15))
             }
                     .frame(width: UIScreen.main.bounds.width - 64, height: 50)
-                    .background(Color(.systemGroupedBackground))
+                    .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                     .cornerRadius(50)
                     .shadow(color: .green.opacity(0.1), radius: 10, x: 0, y: 10)
                     .padding(.top, 25)
@@ -40,7 +41,7 @@ struct LocationSearchView: View {
                 }
             }
         }
-                .padding(.horizontal).background(.white)
+                .padding(.horizontal).background(Color(.systemGroupedBackground))
                 .edgesIgnoringSafeArea(.all)
     }
 }

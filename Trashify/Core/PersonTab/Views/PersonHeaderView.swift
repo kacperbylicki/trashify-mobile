@@ -10,6 +10,8 @@ import SwiftUI
 struct PersonHeaderView: View {
     @Binding var selectedTab: Tab
     @EnvironmentObject var personTabViewModel: PersonTabViewModel
+    @EnvironmentObject var darkModeManager: DarkModeManager
+    
     
     var body: some View {
         VStack() {
@@ -24,7 +26,7 @@ struct PersonHeaderView: View {
                             .bold()
                             .font(.system(size: 20))
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.primary)
                 }
                 
                 Spacer()
@@ -46,9 +48,10 @@ struct PersonHeaderView: View {
                     .bold()
                     .font(.system(size: 24))
                     .padding(.bottom, 50)
+                    .foregroundColor(Color.primary)
             }
         }
-        .background(.white)
+        .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
         .onAppear(perform: personTabViewModel.fetchUserData)
     }
