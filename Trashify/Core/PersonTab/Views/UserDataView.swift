@@ -12,6 +12,7 @@ struct UserDataView: View {
     @Binding var isEditEmailPresented: Bool
     @EnvironmentObject var personTabViewModel: PersonTabViewModel
     @EnvironmentObject var darkModeManager: DarkModeManager
+    @EnvironmentObject var darkModeManager: DarkModeManager
     
     var body: some View {
         VStack() {
@@ -19,6 +20,7 @@ struct UserDataView: View {
                 Text("User data")
                     .bold()
                     .font(.system(size: 20))
+                    .foregroundColor(Color.primary)
                     .foregroundColor(Color.primary)
                     .padding(.bottom, 20)
                     .padding(.top, 20)
@@ -36,6 +38,7 @@ struct UserDataView: View {
                             .padding(.bottom, 50)
                     } else {
                         Text(personTabViewModel.username)
+                            .foregroundColor(Color.primary)
                             .foregroundColor(Color.primary)
                     }
                 }
@@ -63,7 +66,6 @@ struct UserDataView: View {
                     } else {
                         Text(personTabViewModel.email)
                             .accentColor(Color.primary)
-                            .accentColor(.black)
                     }
                 }
                 Spacer()
@@ -80,6 +82,7 @@ struct UserDataView: View {
             .padding(.bottom, 20)
             
         }
+        .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20)
         .onAppear(perform: personTabViewModel.fetchUserData)

@@ -12,6 +12,7 @@ struct PersonHeaderView: View {
     @EnvironmentObject var personTabViewModel: PersonTabViewModel
     @EnvironmentObject var darkModeManager: DarkModeManager
     
+    
     var body: some View {
         VStack() {
             HStack {
@@ -25,6 +26,7 @@ struct PersonHeaderView: View {
                             .bold()
                             .font(.system(size: 20))
                     }
+                    .foregroundColor(Color.primary)
                     .foregroundColor(Color.primary)
                 }
                 
@@ -48,8 +50,10 @@ struct PersonHeaderView: View {
                     .font(.system(size: 24))
                     .padding(.bottom, 50)
                     .foregroundColor(Color.primary)
+                    .foregroundColor(Color.primary)
             }
         }
+        .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
         .onAppear(perform: personTabViewModel.fetchUserData)
