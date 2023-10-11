@@ -16,7 +16,7 @@ struct TrashifyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(personTabViewModel).environmentObject(darkModeManager)
+            SplashScreenView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(personTabViewModel).environmentObject(darkModeManager)
         }
     }
 }
