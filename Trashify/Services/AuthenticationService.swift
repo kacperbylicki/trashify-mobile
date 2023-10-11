@@ -86,7 +86,7 @@ class AuthenticationService {
     let baseURL = ProcessInfo.processInfo.environment["BASE_URL"] ?? ""
     
     func login(email: String, password: String) async throws -> (accessToken: String, refreshToken: String) {
-        guard let url = URL(string: "\(baseURL)/login") else {
+        guard let url = URL(string: "\(baseURL)/accounts/login") else {
             throw AuthenticationError.custom(message: "URL is not correct")
         }
         
@@ -106,7 +106,7 @@ class AuthenticationService {
     }
     
     func logout(accessToken: String) async throws -> Void {
-        guard let url = URL(string: "\(baseURL)/logout") else {
+        guard let url = URL(string: "\(baseURL)/accounts/logout") else {
             throw AuthenticationError.custom(message: "URL is not correct")
         }
         
@@ -123,7 +123,7 @@ class AuthenticationService {
     }
     
     func register(email: String, username: String, password: String, confirmPassword: String) async throws -> Void {
-        guard let url = URL(string: "\(baseURL)/register") else {
+        guard let url = URL(string: "\(baseURL)/accounts/register") else {
             throw AuthenticationError.custom(message: "URL is not correct")
         }
         
@@ -142,7 +142,7 @@ class AuthenticationService {
     }
     
     func fetchCurrentUserDetails(accessToken: String) async throws -> UserDetail {
-        guard let url = URL(string: "\(baseURL)/me") else {
+        guard let url = URL(string: "\(baseURL)/accounts/me") else {
             throw AuthenticationError.custom(message: "URL is not correct")
         }
         
@@ -161,7 +161,7 @@ class AuthenticationService {
     }
     
     func updateUsername(accessToken: String, newUsername: String) async throws -> Void {
-        guard let url = URL(string: "\(baseURL)/username") else {
+        guard let url = URL(string: "\(baseURL)/accounts/username") else {
             throw AuthenticationError.custom(message: "URL is not correct")
         }
 
@@ -181,7 +181,7 @@ class AuthenticationService {
     }
 
     func updateEmail(accessToken: String, newEmail: String) async throws -> Void {
-        guard let url = URL(string: "\(baseURL)/email") else {
+        guard let url = URL(string: "\(baseURL)/accounts/email") else {
             throw AuthenticationError.custom(message: "URL is not correct")
         }
         
