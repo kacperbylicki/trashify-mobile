@@ -27,7 +27,6 @@ struct PersonHeaderView: View {
                             .font(.system(size: 20))
                     }
                     .foregroundColor(Color.primary)
-                    .foregroundColor(Color.primary)
                 }
                 
                 Spacer()
@@ -50,10 +49,8 @@ struct PersonHeaderView: View {
                     .font(.system(size: 24))
                     .padding(.bottom, 50)
                     .foregroundColor(Color.primary)
-                    .foregroundColor(Color.primary)
             }
         }
-        .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
         .onAppear(perform: personTabViewModel.fetchUserData)

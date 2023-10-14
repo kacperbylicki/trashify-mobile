@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ContentAfterLoggedInView: View {
     @EnvironmentObject var darkModeManager: DarkModeManager
-    @EnvironmentObject var darkModeManager: DarkModeManager
     @State private var selectedTab: Tab = .house
     @State private var isPlusSheetPresented = false
     

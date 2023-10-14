@@ -12,8 +12,6 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @EnvironmentObject var darkModeManager: DarkModeManager
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var darkModeManager: DarkModeManager
-    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {

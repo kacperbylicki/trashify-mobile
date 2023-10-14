@@ -10,7 +10,6 @@ import SwiftUI
 struct PersonTabView: View {
     @EnvironmentObject var personTabViewModel: PersonTabViewModel
     @EnvironmentObject var darkModeManager: DarkModeManager
-    @EnvironmentObject var darkModeManager: DarkModeManager
     @State private var username: String = "Username"
     @State private var isDarkMode: Bool = false
     @State private var isEditUsernamePresented = false
@@ -20,8 +19,6 @@ struct PersonTabView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                (darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
-                        .edgesIgnoringSafeArea(.all)
                 (darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
                         .edgesIgnoringSafeArea(.all)
 
