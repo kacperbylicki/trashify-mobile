@@ -63,6 +63,7 @@ struct UserDataView: View {
                     } else {
                         Text(personTabViewModel.email)
                             .accentColor(Color.primary)
+                            .accentColor(.black)
                     }
                 }
                 Spacer()

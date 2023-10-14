@@ -43,6 +43,7 @@ struct PersonTabView: View {
             PersonHeaderView(selectedTab: $selectedTab)
             UserDataView(isEditUsernamePresented: $isEditUsernamePresented, isEditEmailPresented: $isEditEmailPresented)
             AppSettingsView(openAppSettings: openAppSettings)
+
             SignOutView()
         }
         

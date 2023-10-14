@@ -17,7 +17,6 @@ struct AppColors {
 //  Dark mode
     static let darkGray = Color(hex: "#1C1C1E")
     static let textFieldsBackgroundDarkMode = Color(hex: "#333333")
-}
 
 extension Color {
     init(hex: String) {
