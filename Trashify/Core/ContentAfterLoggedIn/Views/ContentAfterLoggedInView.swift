@@ -28,7 +28,7 @@ struct ContentAfterLoggedInView: View {
         }
         .sheet(isPresented: $isPlusSheetPresented) {
             Text("Plus")
-                .foregroundColor(darkModeManager.isDarkMode ?? false ? .white : .black)
+                .foregroundColor(darkModeManager.isDarkMode ? .white : .black)
         }
     }
 }
