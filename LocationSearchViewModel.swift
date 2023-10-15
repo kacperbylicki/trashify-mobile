@@ -11,6 +11,7 @@ import MapKit
 class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
     @Published var searchResults = [MKLocalSearchCompletion]()
     @Published var selectedLocationCoordinate: CLLocationCoordinate2D?
+    @Published var shouldRefocusOnUser: Bool = true
 
     private let searchCompleter = MKLocalSearchCompleter()
 

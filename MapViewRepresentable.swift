@@ -22,17 +22,25 @@ struct MapViewRepresentable: UIViewRepresentable {
 
         return mapView
     }
-
+    
     func updateUIView(_ uiView: UIView, context: Context) {
         guard let mapView = uiView as? MKMapView else {
             return
         }
 
+        let allAnnotations = mapView.annotations
+        mapView.removeAnnotations(allAnnotations)
+
         if let coordinate = locationViewModel.selectedLocationCoordinate {
             let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
             mapView.setRegion(region, animated: true)
+
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            mapView.addAnnotation(annotation)
         }
     }
+
 
     func makeCoordinator() -> MapCoordinator {
         MapCoordinator(parent: self)
@@ -49,8 +57,10 @@ extension MapViewRepresentable {
         }
 
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-            parent.mapView.setRegion(region, animated: true)
+            if parent.locationViewModel.shouldRefocusOnUser {
+                let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+                parent.mapView.setRegion(region, animated: true)
+            }
         }
     }
 }

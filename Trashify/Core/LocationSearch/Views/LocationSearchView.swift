@@ -34,6 +34,7 @@ struct LocationSearchView: View {
                         LocationSearchResultCell(title: searchResult.title, subtitle: searchResult.subtitle).onTapGesture {
                             withAnimation(.spring()) {
                                 locationViewModel.selectLocation(searchResult)
+                                locationViewModel.shouldRefocusOnUser = false
                                 showLocationSearchView.toggle()
                             }
                         }

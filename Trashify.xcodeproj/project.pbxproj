@@ -36,6 +36,8 @@
 		8864A25F2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25E2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift */; };
 		8864A2622AB5CEE800E9F559 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A2612AB5CEE800E9F559 /* LocationManager.swift */; };
 		88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88755D992AD5A9F700D43C85 /* DarkModeManager.swift */; };
+		888131552ADBF9E100980E34 /* AddTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888131542ADBF9E100980E34 /* AddTagsView.swift */; };
+		888131592ADC059100980E34 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888131582ADC059100980E34 /* ImagePicker.swift */; };
 		8883659F2AACB23000B835C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883659E2AACB23000B835C5 /* HomeView.swift */; };
 		88E269202AB5C01C00EDA486 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */; };
 		88E269262AB5CC2A00EDA486 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */; };
@@ -72,6 +74,9 @@
 		8864A25E2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewActionButton.swift; sourceTree = "<group>"; };
 		8864A2612AB5CEE800E9F559 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		88755D992AD5A9F700D43C85 /* DarkModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeManager.swift; sourceTree = "<group>"; };
+		888131512ADBE75A00980E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		888131542ADBF9E100980E34 /* AddTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagsView.swift; sourceTree = "<group>"; };
+		888131582ADC059100980E34 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8883659E2AACB23000B835C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = SOURCE_ROOT; };
 		88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -177,6 +182,7 @@
 		885B254B2A910838007D3A54 /* Trashify */ = {
 			isa = PBXGroup;
 			children = (
+				888131512ADBE75A00980E34 /* Info.plist */,
 				8864A2602AB5CED200E9F559 /* Managers */,
 				885B25672A9110E1007D3A54 /* Helpers */,
 				885B255C2A9109C5007D3A54 /* Core */,
@@ -208,6 +214,7 @@
 		885B255C2A9109C5007D3A54 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				888131522ADBF9B400980E34 /* AddTags */,
 				882F15B62AD5D92A008D6319 /* SplashScreen */,
 				88E269212AB5C07500EDA486 /* LocationSearch */,
 				883145962AB4E54600F6A15B /* ContentAfterLoggedIn */,
@@ -253,7 +260,7 @@
 				885B25682A9110F9007D3A54 /* KeychainHelper.swift */,
 				8815E09E2AC07EA2003E2EAE /* AppColors.swift */,
 				8809D55E2AD06F6F00A2B5B4 /* CornerRoundingHelper.swift */,
-				88755D992AD5A9F700D43C85 /* DarkModeManager.swift */,
+				888131582ADC059100980E34 /* ImagePicker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -280,9 +287,26 @@
 		8864A2602AB5CED200E9F559 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				88755D992AD5A9F700D43C85 /* DarkModeManager.swift */,
 				8864A2612AB5CEE800E9F559 /* LocationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		888131522ADBF9B400980E34 /* AddTags */ = {
+			isa = PBXGroup;
+			children = (
+				888131532ADBF9BF00980E34 /* Views */,
+			);
+			path = AddTags;
+			sourceTree = "<group>";
+		};
+		888131532ADBF9BF00980E34 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				888131542ADBF9E100980E34 /* AddTagsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8883659C2AACB21500B835C5 /* Home */ = {
@@ -347,7 +371,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					885B25482A910838007D3A54 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -390,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				885B25662A910D44007D3A54 /* LoginViewModel.swift in Sources */,
+				888131552ADBF9E100980E34 /* AddTagsView.swift in Sources */,
 				885B25622A910C21007D3A54 /* LoginView.swift in Sources */,
 				885B25752A912960007D3A54 /* LoginPromoView.swift in Sources */,
 				881FDA202AD1B97600363234 /* AppSettingsView.swift in Sources */,
@@ -401,6 +426,7 @@
 				885B254F2A910838007D3A54 /* ContentView.swift in Sources */,
 				8833EA942AD2BCCB003064AD /* PersonTabViewModel.swift in Sources */,
 				8864A25D2AB5CE1300E9F559 /* LocationSearchView.swift in Sources */,
+				888131592ADC059100980E34 /* ImagePicker.swift in Sources */,
 				8864A25B2AB5CDFF00E9F559 /* LocationSearchResultCell.swift in Sources */,
 				881FDA1E2AD1B96200363234 /* UserDataView.swift in Sources */,
 				8883659F2AACB23000B835C5 /* HomeView.swift in Sources */,
@@ -461,6 +487,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -521,6 +548,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -550,11 +578,13 @@
 				DEVELOPMENT_TEAM = 6K3N9379CW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Trashify/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,11 +609,13 @@
 				DEVELOPMENT_TEAM = 6K3N9379CW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Trashify/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
