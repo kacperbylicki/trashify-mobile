@@ -14,6 +14,7 @@ struct HomeView: View {
         NavigationView {
             HomeContent()
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(AppColors.darkerGreen)
     }
 

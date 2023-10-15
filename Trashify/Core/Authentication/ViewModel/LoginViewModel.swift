@@ -74,7 +74,9 @@ class LoginViewModel: ObservableObject {
             keychainHelper.save("accessToken", data: tokens.accessToken)
             keychainHelper.delete("refreshToken")
             keychainHelper.save("refreshToken", data: tokens.refreshToken)
-            authenticationStatus = true
+            DispatchQueue.main.async {
+                self.authenticationStatus = true
+            }
             return .success(())
         } catch AuthenticationError.custom(let errorMessage) {
             DispatchQueue.main.async {
@@ -96,8 +98,12 @@ class LoginViewModel: ObservableObject {
             try await authenticationService.logout(accessToken: accessToken)
             keychainHelper.delete("accessToken")
             keychainHelper.delete("refreshToken")
-            authenticationStatus = false
-            showLogoutAlert = true
+            DispatchQueue.main.async {
+                self.authenticationStatus = false
+            }
+            DispatchQueue.main.async {
+                self.showLogoutAlert = true
+            }
         } catch {
             print(error)
             authenticationStatus = true

@@ -21,8 +21,14 @@ struct ContentView: View {
                 LoginPromoView(isLoggedIn: $isLoggedIn)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .preferredColorScheme(darkModeManager.isDarkMode ? .dark : .light)
         .accentColor(AppColors.darkerGreen)
+        .alert(isPresented: $viewModel.showLogoutAlert, content: {
+            Alert(title: Text("Logged Out"), message: Text("You have been logged out successfully."), dismissButton: .default(Text("OK")) {
+                isLoggedIn = false
+            })
+        })
         .alert(isPresented: $viewModel.showLogoutAlert, content: {
             Alert(title: Text("Logged Out"), message: Text("You have been logged out successfully."), dismissButton: .default(Text("OK")) {
                 isLoggedIn = false
