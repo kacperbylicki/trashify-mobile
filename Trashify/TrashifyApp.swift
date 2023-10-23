@@ -13,12 +13,14 @@ struct TrashifyApp: App {
     @StateObject var locationViewModel = LocationSearchViewModel()
     @StateObject var trashTagsViewModel = TrashTagsViewModel()
     @StateObject var userManagementViewModel = UserManagementViewModel()
+    @StateObject var resetPasswordViewModel = ResetPasswordViewModel()
+    @StateObject var resendVerificationViewModel = ResendVerificationViewModel()
     @StateObject var darkModeManager = DarkModeManager()
     
     
     var body: some Scene {
         WindowGroup {
-            SplashScreenView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(userManagementViewModel).environmentObject(trashTagsViewModel).environmentObject(darkModeManager)
+            SplashScreenView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(userManagementViewModel).environmentObject(trashTagsViewModel).environmentObject(resetPasswordViewModel).environmentObject(resendVerificationViewModel).environmentObject(darkModeManager)
         }
     }
 }

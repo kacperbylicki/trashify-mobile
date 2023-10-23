@@ -82,6 +82,16 @@ struct UpdateEmailResponse: Decodable {
     let error: [String?]?
 }
 
+struct ResetPasswordRequest: Codable {
+    let email: String
+}
+
+struct ResetPasswordeResponse: Decodable {
+    let status: Int
+    let error: [String?]?
+}
+
+
 class AuthenticationService {
     let baseURL = ProcessInfo.processInfo.environment["BASE_URL"] ?? ""
     
@@ -190,6 +200,44 @@ class AuthenticationService {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.httpBody = try JSONEncoder().encode(body)
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let updateResponse = try JSONDecoder().decode(UpdateEmailResponse.self, from: data)
+        
+        guard updateResponse.status == 200 else {
+            throw AuthenticationError.custom(message: (updateResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
+        }
+    }
+    
+    func resetPassword(email: String) async throws -> Void {
+        guard let url = URL(string: "\(baseURL)/accounts/reset-password") else {
+            throw AuthenticationError.custom(message: "URL is not correct")
+        }
+        
+        let body = ResetPasswordRequest(email: email)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONEncoder().encode(body)
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        let updateResponse = try JSONDecoder().decode(UpdateEmailResponse.self, from: data)
+        
+        guard updateResponse.status == 200 else {
+            throw AuthenticationError.custom(message: (updateResponse.error?.first ?? "Unknown Error") ?? "Unknown Error")
+        }
+    }
+    
+    func resendVerification(email: String) async throws -> Void {
+        guard let url = URL(string: "\(baseURL)/accounts/resend-verification") else {
+            throw AuthenticationError.custom(message: "URL is not correct")
+        }
+        
+        let body = ResetPasswordRequest(email: email)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try JSONEncoder().encode(body)
         
         let (data, _) = try await URLSession.shared.data(for: request)

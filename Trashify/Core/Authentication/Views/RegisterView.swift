@@ -86,6 +86,35 @@ struct RegisterView: View {
             HStack {
                 Text("Confirm Password")
                     .font(.headline)
+                SecureField("Confirm your password", text: $registerViewModel.confirmPassword)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.bottom, 30)
+                
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        Task {
+                            let result = await registerViewModel.register()
+                            showAlert = true
+                            registerResult = result
+                            registerViewModel.email = ""
+                            registerViewModel.password = ""
+                            registerViewModel.username = ""
+                            registerViewModel.confirmPassword = ""
+                        }
+                    }) {
+                        Text("Register")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 220, height: 60)
+                            .background(AppColors.darkerGreen)
+                            .cornerRadius(15.0)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    Spacer()
+                }
             }
             .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
             .padding(.horizontal)
@@ -119,10 +148,10 @@ struct RegisterView: View {
             .shadow(color: AppColors.darkerGreen.opacity(0.2), radius: 10, x: 0, y: 10)
             .alert(isPresented: $showAlert) {
                 switch registerResult {
-                case .failure(let error):
-                    return Alert(title: Text("Error"), message: Text(error.errorDescription ?? "Unknown Error"), dismissButton: .default(Text("OK")))
-                default:
-                    return Alert(title: Text("Success"), message: Text("Registration successful"), dismissButton: .default(Text("OK")))
+                    case .failure(let error):
+                        return Alert(title: Text("Error"), message: Text(error.errorDescription ?? "Unknown Error"), dismissButton: .default(Text("OK")))
+                    default:
+                        return Alert(title: Text("Success"), message: Text("Please check your email to confirm registration."), dismissButton: .default(Text("OK")))
                 }
             }
         })

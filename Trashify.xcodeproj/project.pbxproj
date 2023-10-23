@@ -14,6 +14,8 @@
 		881FDA202AD1B97600363234 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA1F2AD1B97600363234 /* AppSettingsView.swift */; };
 		881FDA222AD1B98800363234 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA212AD1B98800363234 /* SignOutView.swift */; };
 		881FDA242AD1B99500363234 /* EditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA232AD1B99500363234 /* EditSheetView.swift */; };
+		88269DF92AE55F130050345E /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88269DF82AE55F130050345E /* ResetPasswordViewModel.swift */; };
+		88269DFB2AE578210050345E /* ResendVerificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88269DFA2AE578210050345E /* ResendVerificationViewModel.swift */; };
 		882F15B82AD5D949008D6319 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F15B72AD5D949008D6319 /* SplashScreenView.swift */; };
 		883145952AB4DAAC00F6A15B /* UserManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883145942AB4DAAC00F6A15B /* UserManagementView.swift */; };
 		883145992AB4E56900F6A15B /* ContentAfterLoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883145982AB4E56900F6A15B /* ContentAfterLoggedInView.swift */; };
@@ -35,9 +37,11 @@
 		8864A25D2AB5CE1300E9F559 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25C2AB5CE1300E9F559 /* LocationSearchView.swift */; };
 		8864A25F2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25E2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift */; };
 		8864A2622AB5CEE800E9F559 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A2612AB5CEE800E9F559 /* LocationManager.swift */; };
+		886971842AE5792A009173EB /* ResendVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886971832AE5792A009173EB /* ResendVerificationView.swift */; };
 		88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88755D992AD5A9F700D43C85 /* DarkModeManager.swift */; };
 		888131592ADC059100980E34 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888131582ADC059100980E34 /* ImagePicker.swift */; };
 		8883659F2AACB23000B835C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883659E2AACB23000B835C5 /* HomeView.swift */; };
+		88A713C42AE540EF00603DA5 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A713C32AE540EF00603DA5 /* ResetPasswordView.swift */; };
 		88E269202AB5C01C00EDA486 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */; };
 		88E269262AB5CC2A00EDA486 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */; };
 		E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */; };
@@ -57,6 +61,8 @@
 		881FDA1F2AD1B97600363234 /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
 		881FDA212AD1B98800363234 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		881FDA232AD1B99500363234 /* EditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetView.swift; sourceTree = "<group>"; };
+		88269DF82AE55F130050345E /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		88269DFA2AE578210050345E /* ResendVerificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendVerificationViewModel.swift; sourceTree = "<group>"; };
 		882F15B72AD5D949008D6319 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		883145942AB4DAAC00F6A15B /* UserManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementView.swift; sourceTree = "<group>"; };
 		883145982AB4E56900F6A15B /* ContentAfterLoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAfterLoggedInView.swift; sourceTree = "<group>"; };
@@ -79,10 +85,12 @@
 		8864A25C2AB5CE1300E9F559 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 		8864A25E2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewActionButton.swift; sourceTree = "<group>"; };
 		8864A2612AB5CEE800E9F559 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		886971832AE5792A009173EB /* ResendVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendVerificationView.swift; sourceTree = "<group>"; };
 		88755D992AD5A9F700D43C85 /* DarkModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeManager.swift; sourceTree = "<group>"; };
 		888131512ADBE75A00980E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		888131582ADC059100980E34 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8883659E2AACB23000B835C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		88A713C32AE540EF00603DA5 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = SOURCE_ROOT; };
 		88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = SOURCE_ROOT; };
 		E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTagsViewModel.swift; sourceTree = "<group>"; };
@@ -257,6 +265,8 @@
 			children = (
 				885B25612A910C21007D3A54 /* LoginView.swift */,
 				885B256E2A911C84007D3A54 /* RegisterView.swift */,
+				88A713C32AE540EF00603DA5 /* ResetPasswordView.swift */,
+				886971832AE5792A009173EB /* ResendVerificationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,6 +276,8 @@
 			children = (
 				885B25652A910D44007D3A54 /* LoginViewModel.swift */,
 				885B256C2A911C58007D3A54 /* RegisterViewModel.swift */,
+				88269DF82AE55F130050345E /* ResetPasswordViewModel.swift */,
+				88269DFA2AE578210050345E /* ResendVerificationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -480,7 +492,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E04736032AF6E8B300EF364F /* TrashService.swift in Sources */,
+				88A713C42AE540EF00603DA5 /* ResetPasswordView.swift in Sources */,
 				885B25662A910D44007D3A54 /* LoginViewModel.swift in Sources */,
+				88269DFB2AE578210050345E /* ResendVerificationViewModel.swift in Sources */,
 				885B25622A910C21007D3A54 /* LoginView.swift in Sources */,
 				885B25752A912960007D3A54 /* WelcomeScreenView.swift in Sources */,
 				881FDA202AD1B97600363234 /* AppSettingsView.swift in Sources */,
@@ -495,6 +509,7 @@
 				888131592ADC059100980E34 /* ImagePicker.swift in Sources */,
 				8864A25B2AB5CDFF00E9F559 /* LocationSearchResultCell.swift in Sources */,
 				881FDA1E2AD1B96200363234 /* UserDataView.swift in Sources */,
+				886971842AE5792A009173EB /* ResendVerificationView.swift in Sources */,
 				8883659F2AACB23000B835C5 /* HomeView.swift in Sources */,
 				E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */,
 				E089D8C32AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage in Sources */,
@@ -511,6 +526,8 @@
 				8832A4042AAC9E0000FC348C /* BottomNavigationView.swift in Sources */,
 				8864A2592AB5CDE300E9F559 /* LocationSearchActivationView.swift in Sources */,
 				881FDA1C2AD1B94D00363234 /* UserManagementHeaderView.swift in Sources */,
+				88269DF92AE55F130050345E /* ResetPasswordViewModel.swift in Sources */,
+				881FDA1C2AD1B94D00363234 /* PersonHeaderView.swift in Sources */,
 				8815E09F2AC07EA2003E2EAE /* AppColors.swift in Sources */,
 				885B25692A9110F9007D3A54 /* KeychainHelper.swift in Sources */,
 				E037849F2AE844CD00A49BB7 /* ImageClassificationService.swift in Sources */,
