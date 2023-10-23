@@ -55,9 +55,9 @@ struct UserManagementView: View {
                 })
         }
         .sheet(isPresented: $isEditEmailPresented) {
-            EditSheetView(isPresented: $isEditEmailPresented, title: "Update your email", text: $userManagementViewModel.newEmail, updateType: .email)
-                .alert(isPresented: $userManagementViewModel.updateSuccess, content: {
-                    Alert(title: Text("Update Successful"), message: Text("Email address has been successfully updated."), dismissButton: .default(Text("OK")) {
+            EditSheetView(isPresented: $isEditEmailPresented, title: "Update your email", text: $personTabViewModel.newEmail, updateType: .email)
+                .alert(isPresented: $personTabViewModel.updateSuccess, content: {
+                    Alert(title: Text("Update Successful"), message: Text("Email address has been successfully updated. Please confirm your new email address."), dismissButton: .default(Text("OK")) {
                         isEditEmailPresented = false
                     })
                 })
