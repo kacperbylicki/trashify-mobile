@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct HomeView: View {
     @State private var showLocationSearchView = true
+    @StateObject private var locationManager = LocationManager()
+    @EnvironmentObject var locationViewModel: LocationSearchViewModel
     
     var body: some View {
         NavigationView {

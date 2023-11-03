@@ -13,6 +13,7 @@ struct LocationSearchView: View {
     @State private var startLocationText = ""
     @Binding var showLocationSearchView: Bool
 
+
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
 
     var body: some View {

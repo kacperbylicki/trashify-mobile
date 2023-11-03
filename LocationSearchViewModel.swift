@@ -12,6 +12,19 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
     @Published var searchResults = [MKLocalSearchCompletion]()
     @Published var selectedLocationCoordinate: CLLocationCoordinate2D?
     @Published var shouldRefocusOnUser: Bool = true
+    @Published var userLocation: CLLocationCoordinate2D?
+    
+    @Published var trashItems: [TrashInDistance] = []
+    @Published var error: String? = nil
+    
+    private let trashService = TrashService()
+    private let authService = AuthenticationService()
+    private var keychainHelper = KeychainHelper()
+    
+    // Load the access token from the keychain
+    private var accessToken: String {
+        keychainHelper.load("accessToken") ?? ""
+    }
 
     private let searchCompleter = MKLocalSearchCompleter()
 
@@ -40,6 +53,25 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
 
             let coordinate = item.placemark.coordinate
             self.selectedLocationCoordinate = coordinate
+            
+            self.fetchTrashInDistance(latitude: Float(coordinate.latitude), longitude: Float(coordinate.longitude), minDistance: 0, maxDistance: 1500)
+        }
+    }
+    
+    func fetchTrashInDistance(latitude: Float, longitude: Float, minDistance: Int? = nil, maxDistance: Int? = nil) {
+        Task {
+            do {
+                print("ok")
+                let fetchedItems = try await trashService.fetchTrashInDistance(accessToken: accessToken, latitude: latitude, longitude: longitude, minDistance: minDistance, maxDistance: maxDistance)
+                
+                DispatchQueue.main.async {
+                    self.trashItems = fetchedItems
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.error = (error as? AuthenticationError)?.localizedDescription ?? "Unknown Error"
+                }
+            }
         }
     }
 
