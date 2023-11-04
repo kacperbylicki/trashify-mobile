@@ -130,16 +130,27 @@ extension MapViewRepresentable {
 
         private func configureAnnotationView(_ annotationView: MKMarkerAnnotationView?, with annotation: TrashAnnotation) {
             annotationView?.canShowCallout = true
-            annotationView?.leftCalloutAccessoryView = UIButton(type: .detailDisclosure)
-
+            
+            let bubbleView = UIView()
+            bubbleView.backgroundColor = .white
+            bubbleView.layer.cornerRadius = 10
+            bubbleView.translatesAutoresizingMaskIntoConstraints = false
+            
+            let bubbleSize = CGSize(width: 200, height: 100)
+            bubbleView.frame = CGRect(origin: CGPoint.zero, size: bubbleSize)
+            annotationView?.detailCalloutAccessoryView = bubbleView
+            
             if let color = annotation.color {
                 annotationView?.markerTintColor = color
             }
 
-            if let iconName = annotation.iconName {
-                annotationView?.glyphImage = UIImage(systemName: iconName)
-                annotationView?.glyphTintColor = UIColor.white
+            if let iconName = annotation.iconName, let glyphImage = UIImage(systemName: iconName) {
+                annotationView?.glyphImage = glyphImage
+                annotationView?.glyphTintColor = .white
             }
         }
+
+
+
     }
 }
