@@ -327,6 +327,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E04735FF2AF6E5B600EF364F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		88E269212AB5C07500EDA486 /* LocationSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,13 +351,6 @@
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
-		};
-		E04735FF2AF6E5B600EF364F /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */,
-			);
-			path = ViewModels;
 		};
 		E037849B2AE8428E00A49BB7 /* Models */ = {
 			isa = PBXGroup;

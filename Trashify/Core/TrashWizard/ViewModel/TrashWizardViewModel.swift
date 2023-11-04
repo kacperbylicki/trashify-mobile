@@ -33,7 +33,7 @@ enum TrashWizardError: LocalizedError {
 
 enum TrashType: String, CaseIterable, Identifiable {
     case none = ""
-    case muncipal = "muncipal"
+    case municipal = "municipal"
     case plastic = "plastic"
     case glass = "glass"
     case bio = "bio"
@@ -44,17 +44,19 @@ enum TrashType: String, CaseIterable, Identifiable {
 
 class TrashWizardViewModel: ObservableObject {
     @Published var trashType: TrashType = .none
-    @Published var description: String = ""
-    @Published var coordinates: String = ""
+    @Published var coordinates: [Double] = []
     @Published var location: String = ""
     
+    private var keychainHelper = KeychainHelper()
     private let imageClassificationService = ImageClassificationService()
+    private let trashService = TrashService()
+    
+    private var accessToken: String {
+        keychainHelper.load("accessToken") ?? ""
+    }
     
     func getTrashTypeFromImageClassification(_ image: UIImage) -> TrashType {
         let prediction = imageClassificationService.classifyTrashImage(image: image)
-        
-        print("\(prediction)")
-        print("\(TrashType(rawValue: prediction.classificationName))")
 
         guard let confidence = prediction.confidencePercentage, confidence >= 0.50 else {
             return TrashType.none
@@ -67,5 +69,25 @@ class TrashWizardViewModel: ObservableObject {
         return trashType
     }
     
-    func createTrash() {}
+    func createTrash() async throws {
+            // Creating the request object
+            let createRequest = CreateTrashRequest(trash: TrashDetail(geolocation: coordinates, tag: trashType.rawValue))
+
+            do {
+                // Making the API call through TrashService
+                let status = try await trashService.createTrash(accessToken: accessToken, request: createRequest)
+
+                // Handle the response based on the status code
+                if status != 201 {
+                    throw TrashWizardError.trashCreationError("Failed to create trash: Server returned status \(status)")
+                }
+            } catch let error as ServiceError {
+                // Custom error handling for ServiceError
+                print(error)
+                throw TrashWizardError.trashCreationError("Service error: \(error.localizedDescription)")
+            } catch {
+                // General error handling
+                throw TrashWizardError.unknownError(error)
+            }
+        }
 }

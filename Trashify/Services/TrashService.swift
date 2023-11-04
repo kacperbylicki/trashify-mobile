@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TrashInDistanceRequest: Codable {
+struct GetTrashInDistanceRequest: Codable {
     let latitude: Float
     let longitude: Float
     let minDistance: Int?
@@ -26,6 +26,19 @@ struct TrashInDistanceResponse: Decodable {
     let error: String?
 }
 
+struct CreateTrashRequest: Codable {
+    let trash: TrashDetail
+}
+
+struct TrashDetail: Codable {
+    let geolocation: [Double]
+    let tag: String
+}
+
+struct CreateTrashResponse: Decodable {
+    let status: Int
+}
+
 enum ServiceError: Error {
     case urlError
     case serverError(String)
@@ -37,9 +50,9 @@ enum ServiceError: Error {
 class TrashService {
     private let baseURL = ProcessInfo.processInfo.environment["BASE_URL"] ?? ""
 
-    func fetchTrashInDistance(accessToken: String, request: TrashInDistanceRequest) async throws -> [TrashInDistance] {
+    func fetchTrashInDistance(accessToken: String, request: GetTrashInDistanceRequest) async throws -> [TrashInDistance] {
         do {
-            let urlRequest = try createURLRequest(accessToken: accessToken, request: request)
+            let urlRequest = try createGetTrashInDistanceRequest(accessToken: accessToken, request: request)
             let (trashData, _) = try await URLSession.shared.data(for: urlRequest)
             let trashResponse = try JSONDecoder().decode(TrashInDistanceResponse.self, from: trashData)
 
@@ -58,8 +71,26 @@ class TrashService {
             throw ServiceError.decodingError(error)
         }
     }
+    
+    func createTrash(accessToken: String, request: CreateTrashRequest) async throws -> Int {
+        do {
+            let urlRequest = try createTrashRequest(accessToken: accessToken, request: request)
+            let (responseData, _) = try await URLSession.shared.data(for: urlRequest)
+            let response = try JSONDecoder().decode(CreateTrashResponse.self, from: responseData)
 
-    private func createURLRequest(accessToken: String, request: TrashInDistanceRequest) throws -> URLRequest {        
+            if response.status != 201 {
+                throw ServiceError.serverError("Server responded with status code: \(response.status)")
+            }
+
+            return response.status
+        } catch let error as ServiceError {
+            throw error
+        } catch {
+            throw ServiceError.decodingError(error)
+        }
+    }
+
+    private func createGetTrashInDistanceRequest(accessToken: String, request: GetTrashInDistanceRequest) throws -> URLRequest {
         var urlComponents = URLComponents(string: "\(baseURL)/trash/distance")
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: "\(request.latitude)"),
@@ -80,6 +111,20 @@ class TrashService {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         urlRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        return urlRequest
+    }
+    
+    private func createTrashRequest(accessToken: String, request: CreateTrashRequest) throws -> URLRequest {
+        guard let url = URL(string: "\(baseURL)/trash") else {
+            throw ServiceError.urlError
+        }
+
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        urlRequest.httpBody = try JSONEncoder().encode(request)
+
         return urlRequest
     }
 }

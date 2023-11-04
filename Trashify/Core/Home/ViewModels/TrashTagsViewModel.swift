@@ -31,7 +31,7 @@ class TrashTagsViewModel: ObservableObject {
 
     func fetchTrashTags(center: CLLocationCoordinate2D) async {
         do {
-            let request = TrashInDistanceRequest(
+            let request = GetTrashInDistanceRequest(
                 latitude: Float(center.latitude),
                 longitude: Float(center.longitude),
                 minDistance: 5,
