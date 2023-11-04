@@ -21,7 +21,8 @@ class TrashAnnotation: MKPointAnnotation {
 }
 
 struct MapViewRepresentable: UIViewRepresentable {
-    private let mapView = MKMapView()
+    let mapView = MKMapView()
+    let locationManager = LocationManager()
 
     @EnvironmentObject private var locationViewModel: LocationSearchViewModel
 
@@ -75,15 +76,15 @@ struct MapViewRepresentable: UIViewRepresentable {
 
     private func getAppearance(forTag tag: String) -> (UIColor, String) {
         switch tag {
-        case "batteries": return (.black, "battery.100")
+        case "batteries": return (.orange, "battery.100")
         case "bio": return (.brown, "leaf.arrow.circlepath")
-        case "bottleMachine": return (.blue, "cart.fill.badge.plus")
+        case "bottleMachine": return (.green, "cart.fill.badge.plus")
         case "mixed": return (.gray, "cube.box.fill")
         case "municipal": return (.black, "building.columns.fill")
-        case "paper": return (.brown, "doc.fill")
-        case "petFeces": return (.darkGray, "tortoise.fill")
-        case "plastic": return (.cyan, "bag.fill")
-        case "toners": return (.purple, "printer.fill")
+        case "paper": return (.blue, "doc.fill")
+        case "petFeces": return (.green, "tortoise.fill")
+        case "plastic": return (.yellow, "bag.fill")
+        case "toners": return (.black, "printer.fill")
         default: return (.red, "exclamationmark.triangle.fill")
         }
     }
@@ -124,14 +125,14 @@ extension MapViewRepresentable {
                 minDistance: 0,
                 maxDistance: 1500
             )
-            
-            DispatchQueue.main.async {
-                for trashItemInDistance in self.parent.locationViewModel.trashItems {
-                    let trashItem = Trash(uuid: trashItemInDistance.uuid, geolocation: trashItemInDistance.geolocation, tag: trashItemInDistance.tag)
-                    self.parent.addTrashPin(using: trashItem, to: self.parent.mapView)
-                }
+
+            for trashItemInDistance in await parent.locationViewModel.trashItems {
+                let trashItem = Trash(uuid: trashItemInDistance.uuid, geolocation: trashItemInDistance.geolocation, tag: trashItemInDistance.tag)
+                
+                await self.parent.addTrashPin(using: trashItem, to: self.parent.mapView)
             }
         }
+
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             guard let trashAnnotation = annotation as? TrashAnnotation else { return nil }
