@@ -101,16 +101,38 @@ extension MapViewRepresentable {
             self.parent = parent
             super.init()
         }
-
+        
         func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            parent.locationViewModel.userLocation = userLocation.coordinate
+            if parent.locationViewModel.isFirstLaunch {
+                Task {
+                    await fetchAndDisplayTrashPins(userLocation: userLocation.coordinate)
+                }
+                
+                parent.locationViewModel.isFirstLaunch = false
+            }
             
             if parent.locationViewModel.shouldRefocusOnUser {
                 let region = MKCoordinateRegion(center: userLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-                parent.mapView.setRegion(region, animated: true)
+                mapView.setRegion(region, animated: true)
             }
         }
 
+        private func fetchAndDisplayTrashPins(userLocation: CLLocationCoordinate2D) async {
+            await parent.locationViewModel.fetchTrashInDistance(
+                latitude: Float(userLocation.latitude),
+                longitude: Float(userLocation.longitude),
+                minDistance: 0,
+                maxDistance: 1500
+            )
+            
+            DispatchQueue.main.async {
+                for trashItemInDistance in self.parent.locationViewModel.trashItems {
+                    let trashItem = Trash(uuid: trashItemInDistance.uuid, geolocation: trashItemInDistance.geolocation, tag: trashItemInDistance.tag)
+                    self.parent.addTrashPin(using: trashItem, to: self.parent.mapView)
+                }
+            }
+        }
+        
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             guard let trashAnnotation = annotation as? TrashAnnotation else { return nil }
             

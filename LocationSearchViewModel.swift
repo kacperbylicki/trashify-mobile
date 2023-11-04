@@ -13,9 +13,10 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
     @Published var selectedLocationCoordinate: CLLocationCoordinate2D?
     @Published var shouldRefocusOnUser: Bool = true
     @Published var userLocation: CLLocationCoordinate2D?
-    
+    @Published var shouldAddNewTrashPin = false
     @Published var trashItems: [TrashInDistance] = []
     @Published var error: String? = nil
+    @Published var isFirstLaunch = true
     
     private let trashService = TrashService()
     private let authService = AuthenticationService()
@@ -39,7 +40,11 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
         searchCompleter.delegate = self
         searchCompleter.queryFragment = searchFragment
     }
-
+    
+    func startTrackingUser() {
+        self.shouldAddNewTrashPin = true
+    }
+    
     func selectLocation(_ searchCompletion: MKLocalSearchCompletion) {
         locationSearch(forLocalSearchCompletion: searchCompletion) { response, error in
             if let error = error {
@@ -61,7 +66,6 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
     func fetchTrashInDistance(latitude: Float, longitude: Float, minDistance: Int? = nil, maxDistance: Int? = nil) {
         Task {
             do {
-                print("ok")
                 let fetchedItems = try await trashService.fetchTrashInDistance(accessToken: accessToken, latitude: latitude, longitude: longitude, minDistance: minDistance, maxDistance: maxDistance)
                 
                 DispatchQueue.main.async {
