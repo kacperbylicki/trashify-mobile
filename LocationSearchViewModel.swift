@@ -63,7 +63,7 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
         }
     }
     
-    func fetchTrashInDistance(latitude: Float, longitude: Float, minDistance: Int? = nil, maxDistance: Int? = nil) {
+    func fetchTrashInDistance(latitude: Float, longitude: Float, minDistance: Int? = nil, maxDistance: Int? = nil) async {
         Task {
             do {
                 let fetchedItems = try await trashService.fetchTrashInDistance(accessToken: accessToken, latitude: latitude, longitude: longitude, minDistance: minDistance, maxDistance: maxDistance)
