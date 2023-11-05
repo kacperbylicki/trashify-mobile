@@ -41,6 +41,8 @@
 		8883659F2AACB23000B835C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883659E2AACB23000B835C5 /* HomeView.swift */; };
 		88E269202AB5C01C00EDA486 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */; };
 		88E269262AB5CC2A00EDA486 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */; };
+		E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */; };
+		E04736032AF6E8B300EF364F /* TrashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04736022AF6E8B300EF364F /* TrashService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		8883659E2AACB23000B835C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = SOURCE_ROOT; };
 		88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTagsViewModel.swift; sourceTree = "<group>"; };
+		E04736022AF6E8B300EF364F /* TrashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				885B256A2A911133007D3A54 /* AuthenticationService.swift */,
+				E04736022AF6E8B300EF364F /* TrashService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 		8883659C2AACB21500B835C5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				E04735FF2AF6E5B600EF364F /* ViewModels */,
 				8883659D2AACB21C00B835C5 /* Views */,
 			);
 			path = Home;
@@ -341,6 +347,14 @@
 				88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E04735FF2AF6E5B600EF364F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +427,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E04736032AF6E8B300EF364F /* TrashService.swift in Sources */,
 				885B25662A910D44007D3A54 /* LoginViewModel.swift in Sources */,
 				888131552ADBF9E100980E34 /* AddTagsView.swift in Sources */,
 				885B25622A910C21007D3A54 /* LoginView.swift in Sources */,
@@ -430,6 +445,7 @@
 				8864A25B2AB5CDFF00E9F559 /* LocationSearchResultCell.swift in Sources */,
 				881FDA1E2AD1B96200363234 /* UserDataView.swift in Sources */,
 				8883659F2AACB23000B835C5 /* HomeView.swift in Sources */,
+				E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */,
 				885B256B2A911133007D3A54 /* AuthenticationService.swift in Sources */,
 				8864A2622AB5CEE800E9F559 /* LocationManager.swift in Sources */,
 				882F15B82AD5D949008D6319 /* SplashScreenView.swift in Sources */,
@@ -575,10 +591,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trashify/Preview Content\"";
-				DEVELOPMENT_TEAM = 6K3N9379CW;
+				DEVELOPMENT_TEAM = DH6J4B2L35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trashify/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -590,7 +608,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marek.Trashify;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kacperbylicki.Trashify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -606,10 +624,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Trashify/Preview Content\"";
-				DEVELOPMENT_TEAM = 6K3N9379CW;
+				DEVELOPMENT_TEAM = DH6J4B2L35;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Trashify/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -621,7 +641,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.marek.Trashify;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kacperbylicki.Trashify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

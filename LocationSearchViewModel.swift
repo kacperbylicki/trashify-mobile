@@ -8,12 +8,12 @@
 import Foundation
 import MapKit
 
-class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
+class LocationSearchViewModel: NSObject, ObservableObject {
     @Published var searchResults = [MKLocalSearchCompletion]()
     @Published var selectedLocationCoordinate: CLLocationCoordinate2D?
     @Published var shouldRefocusOnUser: Bool = true
 
-    private let searchCompleter = MKLocalSearchCompleter()
+    private let searchCompleter: MKLocalSearchCompleter
 
     var searchFragment: String = "" {
         didSet {
@@ -21,41 +21,44 @@ class LocationSearchViewModel: NSObject, ObservableObject, MKLocalSearchComplete
         }
     }
 
-    override init() {
+    init(searchCompleter: MKLocalSearchCompleter = MKLocalSearchCompleter()) {
+        self.searchCompleter = searchCompleter
         super.init()
-        searchCompleter.delegate = self
-        searchCompleter.queryFragment = searchFragment
+        self.searchCompleter.delegate = self
     }
 
     func selectLocation(_ searchCompletion: MKLocalSearchCompletion) {
-        locationSearch(forLocalSearchCompletion: searchCompletion) { response, error in
-            if let error = error {
+        performLocationSearch(with: searchCompletion.title) { [weak self] result in
+            switch result {
+            case .success(let coordinate):
+                self?.selectedLocationCoordinate = coordinate
+            case .failure(let error):
                 print(error.localizedDescription)
-                return
             }
-
-            guard let item = response?.mapItems.first else {
-                return
-            }
-
-            let coordinate = item.placemark.coordinate
-            self.selectedLocationCoordinate = coordinate
         }
     }
 
-    func locationSearch(forLocalSearchCompletion searchCompletion: MKLocalSearchCompletion, completion: @escaping MKLocalSearch.CompletionHandler) {
+    private func performLocationSearch(with query: String, completion: @escaping (Result<CLLocationCoordinate2D, Error>) -> Void) {
         let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = searchCompletion.title
+        searchRequest.naturalLanguageQuery = query
 
         let search = MKLocalSearch(request: searchRequest)
-        search.start(completionHandler: completion)
+        search.start { response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            if let coordinate = response?.mapItems.first?.placemark.coordinate {
+                completion(.success(coordinate))
+            }
+        }
     }
-
-
 }
 
-extension LocationSearchViewModel {
+extension LocationSearchViewModel: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        searchResults = completer.results
+        DispatchQueue.main.async { [weak self] in
+            self?.searchResults = completer.results
+        }
     }
 }

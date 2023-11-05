@@ -8,62 +8,68 @@
 import SwiftUI
 import CoreLocation
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationManager: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
     private let geocoder = CLGeocoder()
 
-    @Published var location: CLLocation? = nil {
-        didSet {
-            fetchAddress(for: location)
-        }
-    }
+    @Published var lastKnownLocation: CLLocation? = nil
     @Published var placemark: CLPlacemark? = nil
-    
+    @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
+    @Published var locationFetchError: Error?
+
     override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
-
-    func requestLocation() {
-        locationManager.requestLocation()
+    func requestLocationAuthorization() {
+        locationManager.requestWhenInUseAuthorization()
     }
 
-    private func fetchAddress(for location: CLLocation?) {
-        guard let location = location else { return }
-
-        geocoder.reverseGeocodeLocation(location) { placemark, error in
-            if let error = error {
-                print("Could not geocode location: \(error.localizedDescription)")
-                return
-            }
-
-            self.placemark = placemark?.first
-        }
+    func startLocationUpdates() {
+        locationManager.startUpdatingLocation()
     }
-}
 
-extension LocationManager {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else {
-            return
-        }
-        self.location = location
+    func stopLocationUpdates() {
         locationManager.stopUpdatingLocation()
     }
 
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus {
-        case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-        case .restricted, .denied, .authorizedAlways, .authorizedWhenInUse:
-            break
-        @unknown default:
-            break
+    private func reverseGeocodeLocation(_ location: CLLocation) {
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
+            if let error = error {
+                self?.locationFetchError = error
+                return
+            }
+            self?.placemark = placemarks?.first
         }
     }
 }
+
+// MARK: - CLLocationManagerDelegate
+extension LocationManager: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let newLocation = locations.last else { return }
+        lastKnownLocation = newLocation
+        reverseGeocodeLocation(newLocation)
+    }
+
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        authorizationStatus = manager.authorizationStatus
+        switch authorizationStatus {
+        case .notDetermined:
+            requestLocationAuthorization()
+        case .authorizedWhenInUse, .authorizedAlways:
+            startLocationUpdates()
+        case .restricted, .denied:
+            // Handle restricted or denied cases if needed
+            break
+        @unknown default:
+            fatalError("Unhandled authorization status: \(manager.authorizationStatus)")
+        }
+    }
+}
+
 
 
 

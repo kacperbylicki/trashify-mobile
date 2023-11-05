@@ -8,59 +8,144 @@
 import SwiftUI
 import MapKit
 
+class TrashAnnotation: MKPointAnnotation {
+    var color: UIColor?
+    var iconName: String?
+}
+
 struct MapViewRepresentable: UIViewRepresentable {
-    let mapView = MKMapView()
-    let locationManager = LocationManager()
-
+    @EnvironmentObject var trashTagsViewModel: TrashTagsViewModel
     @EnvironmentObject var locationViewModel: LocationSearchViewModel
+    @ObservedObject var locationManager: LocationManager
 
-    func makeUIView(context: Context) -> UIView {
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
         mapView.delegate = context.coordinator
         mapView.isRotateEnabled = false
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
-
         return mapView
     }
     
-    func updateUIView(_ uiView: UIView, context: Context) {
-        guard let mapView = uiView as? MKMapView else {
-            return
+    func updateUIView(_ mapView: MKMapView, context: Context) {
+        if mapView.annotations.count != trashTagsViewModel.trashTags.count {
+            updateAnnotations(from: mapView)
         }
-
-        let allAnnotations = mapView.annotations
-        mapView.removeAnnotations(allAnnotations)
-
-        if let coordinate = locationViewModel.selectedLocationCoordinate {
-            let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        
+        // Check if the user has interacted with the map to disable automatic re-centering
+        if !context.coordinator.userHasInteractedWithMap, let newLocation = locationManager.lastKnownLocation {
+            let region = MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
             mapView.setRegion(region, animated: true)
-
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            mapView.addAnnotation(annotation)
+        }
+        
+        if let selectedLocation = locationViewModel.selectedLocationCoordinate {
+            let region = MKCoordinateRegion(center: selectedLocation, latitudinalMeters: 500, longitudinalMeters: 500)
+            mapView.setRegion(region, animated: true)
+            locationViewModel.selectedLocationCoordinate = nil
         }
     }
 
-
     func makeCoordinator() -> MapCoordinator {
-        MapCoordinator(parent: self)
+        MapCoordinator(self)
+    }
+
+    func updateAnnotations(from mapView: MKMapView) {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(trashTagsViewModel.trashTags.map { tag in
+            let annotation = TrashAnnotation()
+            annotation.title = tag.title
+            annotation.coordinate = tag.coordinate
+            
+            let (color, iconName) = getAppearance(forTag: tag.title)
+            annotation.color = color
+            annotation.iconName = iconName
+            
+            return annotation
+        })
+    }
+    
+    private func getAppearance(forTag tag: String) -> (UIColor, String) {
+        switch tag {
+        case "batteries": return (.orange, "battery.100")
+        case "bio": return (.brown, "leaf.arrow.circlepath")
+        case "bottleMachine": return (.green, "cart.fill.badge.plus")
+        case "mixed": return (.gray, "cube.box.fill")
+        case "municipal": return (.black, "building.columns.fill")
+        case "paper": return (.blue, "doc.fill")
+        case "petFeces": return (.green, "tortoise.fill")
+        case "plastic": return (.yellow, "bag.fill")
+        case "toners": return (.black, "printer.fill")
+        default: return (.red, "exclamationmark.triangle.fill")
+        }
     }
 }
 
-extension MapViewRepresentable {
-    class MapCoordinator: NSObject, MKMapViewDelegate {
-        let parent: MapViewRepresentable
+class MapCoordinator: NSObject, MKMapViewDelegate {
+    var mapViewRepresentable: MapViewRepresentable
+    var userHasInteractedWithMap = false
 
-        init(parent: MapViewRepresentable) {
-            self.parent = parent
-            super.init()
+    init(_ mapViewRepresentable: MapViewRepresentable) {
+        self.mapViewRepresentable = mapViewRepresentable
+    }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        if mapView.isUserInteractionEnabled {
+            userHasInteractedWithMap = true
         }
+    }
 
-        func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-            if parent.locationViewModel.shouldRefocusOnUser {
-                let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-                parent.mapView.setRegion(region, animated: true)
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        Task {
+            await mapViewRepresentable.trashTagsViewModel.fetchTrashTags(center: mapView.centerCoordinate)
+            DispatchQueue.main.async {
+                self.mapViewRepresentable.updateAnnotations(from: mapView)
             }
         }
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let trashAnnotation = annotation as? TrashAnnotation else {
+            return nil
+        }
+
+        let identifier = "TrashAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
+
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        } else {
+            annotationView?.annotation = annotation
+        }
+
+        annotationView?.glyphImage = UIImage(systemName: trashAnnotation.iconName ?? "questionmark")
+        annotationView?.markerTintColor = trashAnnotation.color
+        
+        configureAnnotationView(annotationView, with: trashAnnotation)
+
+        return annotationView
+    }
+    
+    private func configureAnnotationView(_ annotationView: MKMarkerAnnotationView?, with annotation: TrashAnnotation) {
+        annotationView?.canShowCallout = true
+        
+        let bubbleView = UIView()
+        bubbleView.backgroundColor = .white
+        bubbleView.layer.cornerRadius = 10
+        bubbleView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let bubbleSize = CGSize(width: 200, height: 100)
+        bubbleView.frame = CGRect(origin: CGPoint.zero, size: bubbleSize)
+        annotationView?.detailCalloutAccessoryView = bubbleView
+        
+        if let color = annotation.color {
+            annotationView?.markerTintColor = color
+        }
+
+        if let iconName = annotation.iconName, let glyphImage = UIImage(systemName: iconName) {
+            annotationView?.glyphImage = glyphImage
+            annotationView?.glyphTintColor = .white
+        }
+    }
 }
+
+

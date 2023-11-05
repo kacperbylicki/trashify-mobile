@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showLocationSearchView = true
+    @StateObject private var locationManager = LocationManager()
     
     var body: some View {
         NavigationView {
@@ -20,7 +21,11 @@ struct HomeView: View {
 
     func HomeContent() -> some View {
         ZStack(alignment: .top) {
-            MapViewRepresentable().ignoresSafeArea()
+            MapViewRepresentable(locationManager: locationManager)
+                .ignoresSafeArea()
+                .onAppear {
+                    locationManager.startLocationUpdates()
+                }
             
             VStack(alignment: .leading) {
                 if !showLocationSearchView {
