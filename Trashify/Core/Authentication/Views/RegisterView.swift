@@ -14,95 +14,136 @@ struct RegisterView: View {
     @State private var showAlert = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Create Account")
+        VStack(alignment: .leading, spacing: 15, content: {
+            // Header
+            VStack(alignment: .leading) {
+                Text("Get Started with Trashify 🌱")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
-                
-                Text("Join our community!")
+                Text("Be a part of our green revolution!")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
-            .padding(.bottom, 30)
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
+            .padding(.bottom, 15)
             
-            Spacer()
-            
-            VStack(alignment: .leading) {
+            // Username field
+            HStack {
                 Text("Username")
                     .font(.headline)
-                TextField("Enter your username", text: $registerViewModel.username)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .padding(.bottom, 15)
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
+            HStack {
+                TextField("Enter username", text: $registerViewModel.username).autocapitalization(.none).frame(height: 50).padding(.horizontal, 20).overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                                .stroke(AppColors.darkerGreen, lineWidth: 3)
+                )
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            // Email field
+            HStack {
                 Text("Email Address")
                     .font(.headline)
-                TextField("Enter your email", text: $registerViewModel.email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .padding(.bottom, 15)
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
+            HStack {
+                TextField("Enter email", text: $registerViewModel.email).keyboardType(.emailAddress).autocapitalization(.none).frame(height: 50).padding(.horizontal, 20).overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                                .stroke(AppColors.darkerGreen, lineWidth: 3)
+                )
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            // Password field
+            HStack {
                 Text("Password")
                     .font(.headline)
-                SecureField("Enter your password", text: $registerViewModel.password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.bottom, 30)
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
+            HStack {
+                SecureField("Enter password", text: $registerViewModel.password).autocapitalization(.none).frame(height: 50).padding(.horizontal, 20).overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                                .stroke(AppColors.darkerGreen, lineWidth: 3)
+                )
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            // Password confirmation field
+            HStack {
                 Text("Confirm Password")
                     .font(.headline)
-                SecureField("Confirm your password", text: $registerViewModel.confirmPassword)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.bottom, 30)
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        Task {
-                            let result = await registerViewModel.register()
-                            showAlert = true
-                            registerResult = result
-                        }
-                    }) {
-                        Text("Register")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 220, height: 60)
-                            .background(AppColors.darkerGreen)
-                            .cornerRadius(15.0)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    
-                    Spacer()
-                }
             }
-            
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
             HStack {
-                Spacer()
-                HStack {
-                    Text("Already have an account?")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                    NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn).accentColor(AppColors.originalGreen)) {
-                        Text("Login")
-                            .font(.footnote)
-                            .foregroundColor(AppColors.darkerGreen)
-                            .fontWeight(.semibold)
-                    }
+                SecureField("Enter password confirmation", text: $registerViewModel.confirmPassword).autocapitalization(.none).frame(height: 50).padding(.horizontal, 20).overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                                .stroke(AppColors.darkerGreen, lineWidth: 3)
+                )
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            // Register button
+            Button("Register") {
+                Task {
+                    let result = await registerViewModel.register()
+                    showAlert = true
+                    registerResult = result
                 }
-                .padding(.bottom, 20)
-                Spacer()
             }
-            .padding()
-            Spacer()
-        }
-        .padding()
-        .alert(isPresented: $showAlert) {
-            switch registerResult {
-            case .failure(let error):
-                return Alert(title: Text("Error"), message: Text(error.errorDescription ?? "Unknown Error"), dismissButton: .default(Text("OK")))
-            default:
-                return Alert(title: Text("Success"), message: Text("Registration successful"), dismissButton: .default(Text("OK")))
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .fontWeight(.bold)
+            .background(AppColors.darkerGreen)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .padding(.top, 20)
+            .padding(.horizontal)
+            .shadow(color: AppColors.darkerGreen.opacity(0.2), radius: 10, x: 0, y: 10)
+            .alert(isPresented: $showAlert) {
+                switch registerResult {
+                case .failure(let error):
+                    return Alert(title: Text("Error"), message: Text(error.errorDescription ?? "Unknown Error"), dismissButton: .default(Text("OK")))
+                default:
+                    return Alert(title: Text("Success"), message: Text("Registration successful"), dismissButton: .default(Text("OK")))
+                }
             }
+        })
+        .frame(maxHeight: .infinity, alignment: .center)
+        .padding(.top, 25)
+        .navigationBarHidden(true)
+        
+        // Login navigation footer
+        VStack(alignment: .trailing) {
+            HStack(alignment: .center) {
+                Text("Already have an account?")
+                        .foregroundColor(.gray)
+                        .font(.system(size: 15))
+
+                NavigationLink(destination: LoginView(isLoggedIn: $isLoggedIn)) {
+                    Text("Login")
+                            .foregroundColor(AppColors.darkerGreen)
+                            .font(.system(size: 15))
+                }
+            }
+            .padding(.bottom, 20)
         }
     }
 }

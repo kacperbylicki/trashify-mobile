@@ -16,7 +16,7 @@ struct EditSheetView: View {
     var title: String
     @Binding var text: String
     var updateType: UpdateType
-    @EnvironmentObject var personTabViewModel: PersonTabViewModel
+    @EnvironmentObject var userManagementViewModel: UserManagementViewModel
     @EnvironmentObject var darkModeManager: DarkModeManager
     
     @State private var showError: Bool = false
@@ -38,14 +38,14 @@ struct EditSheetView: View {
                 .onChange(of: text) { newValue in
                     switch updateType {
                     case .email:
-                        personTabViewModel.newEmail = newValue
+                        userManagementViewModel.newEmail = newValue
                     case .username:
-                        personTabViewModel.newUsername = newValue
+                        userManagementViewModel.newUsername = newValue
                     }
                 }
 
-            if personTabViewModel.errorMessage != nil {
-                Text(personTabViewModel.errorMessage ?? "Unknown error")
+            if userManagementViewModel.errorMessage != nil {
+                Text(userManagementViewModel.errorMessage ?? "Unknown error")
                     .foregroundColor(.red)
                     .padding(.bottom, 15)
             }
@@ -53,9 +53,9 @@ struct EditSheetView: View {
             Button(action: {
                 switch updateType {
                 case .email:
-                    personTabViewModel.updateEmail()
+                    userManagementViewModel.updateEmail()
                 case .username:
-                    personTabViewModel.updateUsername()
+                    userManagementViewModel.updateUsername()
                 }
             }) {
                 Text("Save")

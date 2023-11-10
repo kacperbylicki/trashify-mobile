@@ -34,6 +34,10 @@ class LocationManager: NSObject, ObservableObject {
     func stopLocationUpdates() {
         locationManager.stopUpdatingLocation()
     }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print("Failed to get location: \(error.localizedDescription)")
+    }
 
     private func reverseGeocodeLocation(_ location: CLLocation) {
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in

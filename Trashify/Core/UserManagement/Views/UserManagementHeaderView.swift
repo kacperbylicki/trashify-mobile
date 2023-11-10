@@ -1,5 +1,5 @@
 //
-//  PersonHeaderView.swift
+//  UserManagementHeaderView.swift
 //  Trashify
 //
 //  Created by Marek Gerszendorf on 07/10/2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct PersonHeaderView: View {
+struct UserManagementHeaderView: View {
     @Binding var selectedTab: Tab
-    @EnvironmentObject var personTabViewModel: PersonTabViewModel
+    @EnvironmentObject var userManagementViewModel: UserManagementViewModel
     @EnvironmentObject var darkModeManager: DarkModeManager
     
     
@@ -39,12 +39,12 @@ struct PersonHeaderView: View {
                 .padding(.top, 15)
                 .padding(.bottom, 5)
             
-            if personTabViewModel.username.isEmpty {
+            if userManagementViewModel.username.isEmpty {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .black))
                     .padding(.bottom, 50)
             } else {
-                Text(personTabViewModel.username)
+                Text(userManagementViewModel.username)
                     .bold()
                     .font(.system(size: 24))
                     .padding(.bottom, 50)
@@ -53,14 +53,14 @@ struct PersonHeaderView: View {
         }
         .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20, corners: [.bottomLeft, .bottomRight])
-        .onAppear(perform: personTabViewModel.fetchUserData)
+        .onAppear(perform: userManagementViewModel.fetchUserData)
     }
 }
 
-struct PersonHeaderView_Previews: PreviewProvider {
+struct UserManagementHeaderView_Previews: PreviewProvider {
     @State static var mockSelectedTab: Tab = .house
     
     static var previews: some View {
-        PersonHeaderView(selectedTab: $mockSelectedTab)
+        UserManagementHeaderView(selectedTab: $mockSelectedTab)
     }
 }

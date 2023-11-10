@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		8809D55F2AD06F6F00A2B5B4 /* CornerRoundingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809D55E2AD06F6F00A2B5B4 /* CornerRoundingHelper.swift */; };
 		8815E09F2AC07EA2003E2EAE /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8815E09E2AC07EA2003E2EAE /* AppColors.swift */; };
-		881FDA1C2AD1B94D00363234 /* PersonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA1B2AD1B94D00363234 /* PersonHeaderView.swift */; };
+		881FDA1C2AD1B94D00363234 /* UserManagementHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA1B2AD1B94D00363234 /* UserManagementHeaderView.swift */; };
 		881FDA1E2AD1B96200363234 /* UserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA1D2AD1B96200363234 /* UserDataView.swift */; };
 		881FDA202AD1B97600363234 /* AppSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA1F2AD1B97600363234 /* AppSettingsView.swift */; };
 		881FDA222AD1B98800363234 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA212AD1B98800363234 /* SignOutView.swift */; };
 		881FDA242AD1B99500363234 /* EditSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881FDA232AD1B99500363234 /* EditSheetView.swift */; };
 		882F15B82AD5D949008D6319 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882F15B72AD5D949008D6319 /* SplashScreenView.swift */; };
-		883145952AB4DAAC00F6A15B /* PersonTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883145942AB4DAAC00F6A15B /* PersonTabView.swift */; };
+		883145952AB4DAAC00F6A15B /* UserManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883145942AB4DAAC00F6A15B /* UserManagementView.swift */; };
 		883145992AB4E56900F6A15B /* ContentAfterLoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883145982AB4E56900F6A15B /* ContentAfterLoggedInView.swift */; };
 		8832A4042AAC9E0000FC348C /* BottomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8832A4032AAC9E0000FC348C /* BottomNavigationView.swift */; };
-		8833EA942AD2BCCB003064AD /* PersonTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833EA932AD2BCCB003064AD /* PersonTabViewModel.swift */; };
+		8833EA942AD2BCCB003064AD /* UserManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8833EA932AD2BCCB003064AD /* UserManagementViewModel.swift */; };
 		885B254D2A910838007D3A54 /* TrashifyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B254C2A910838007D3A54 /* TrashifyApp.swift */; };
 		885B254F2A910838007D3A54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B254E2A910838007D3A54 /* ContentView.swift */; };
 		885B25512A910838007D3A54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885B25502A910838007D3A54 /* Assets.xcassets */; };
@@ -29,35 +29,39 @@
 		885B256B2A911133007D3A54 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B256A2A911133007D3A54 /* AuthenticationService.swift */; };
 		885B256D2A911C58007D3A54 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B256C2A911C58007D3A54 /* RegisterViewModel.swift */; };
 		885B256F2A911C84007D3A54 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B256E2A911C84007D3A54 /* RegisterView.swift */; };
-		885B25752A912960007D3A54 /* LoginPromoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B25742A912960007D3A54 /* LoginPromoView.swift */; };
+		885B25752A912960007D3A54 /* WelcomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B25742A912960007D3A54 /* WelcomeScreenView.swift */; };
 		8864A2592AB5CDE300E9F559 /* LocationSearchActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A2582AB5CDE300E9F559 /* LocationSearchActivationView.swift */; };
 		8864A25B2AB5CDFF00E9F559 /* LocationSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25A2AB5CDFF00E9F559 /* LocationSearchResultCell.swift */; };
 		8864A25D2AB5CE1300E9F559 /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25C2AB5CE1300E9F559 /* LocationSearchView.swift */; };
 		8864A25F2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A25E2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift */; };
 		8864A2622AB5CEE800E9F559 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864A2612AB5CEE800E9F559 /* LocationManager.swift */; };
 		88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88755D992AD5A9F700D43C85 /* DarkModeManager.swift */; };
-		888131552ADBF9E100980E34 /* AddTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888131542ADBF9E100980E34 /* AddTagsView.swift */; };
 		888131592ADC059100980E34 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888131582ADC059100980E34 /* ImagePicker.swift */; };
 		8883659F2AACB23000B835C5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8883659E2AACB23000B835C5 /* HomeView.swift */; };
 		88E269202AB5C01C00EDA486 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */; };
 		88E269262AB5CC2A00EDA486 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */; };
 		E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */; };
 		E04736032AF6E8B300EF364F /* TrashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04736022AF6E8B300EF364F /* TrashService.swift */; };
+		E037849F2AE844CD00A49BB7 /* ImageClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E037849E2AE844CD00A49BB7 /* ImageClassificationService.swift */; };
+		E089D8BC2AEAC99400DE9748 /* TrashWizardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8BB2AEAC99400DE9748 /* TrashWizardViewModel.swift */; };
+		E089D8BE2AEAC9A700DE9748 /* TrashWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8BD2AEAC9A700DE9748 /* TrashWizardView.swift */; };
+		E089D8C12AEAE55500DE9748 /* TrashClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8C02AEAE55500DE9748 /* TrashClassifier.swift */; };
+		E089D8C32AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8809D55E2AD06F6F00A2B5B4 /* CornerRoundingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRoundingHelper.swift; sourceTree = "<group>"; };
 		8815E09E2AC07EA2003E2EAE /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
-		881FDA1B2AD1B94D00363234 /* PersonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeaderView.swift; sourceTree = "<group>"; };
+		881FDA1B2AD1B94D00363234 /* UserManagementHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementHeaderView.swift; sourceTree = "<group>"; };
 		881FDA1D2AD1B96200363234 /* UserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataView.swift; sourceTree = "<group>"; };
 		881FDA1F2AD1B97600363234 /* AppSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsView.swift; sourceTree = "<group>"; };
 		881FDA212AD1B98800363234 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		881FDA232AD1B99500363234 /* EditSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSheetView.swift; sourceTree = "<group>"; };
 		882F15B72AD5D949008D6319 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		883145942AB4DAAC00F6A15B /* PersonTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTabView.swift; sourceTree = "<group>"; };
+		883145942AB4DAAC00F6A15B /* UserManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementView.swift; sourceTree = "<group>"; };
 		883145982AB4E56900F6A15B /* ContentAfterLoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAfterLoggedInView.swift; sourceTree = "<group>"; };
 		8832A4032AAC9E0000FC348C /* BottomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavigationView.swift; sourceTree = "<group>"; };
-		8833EA932AD2BCCB003064AD /* PersonTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTabViewModel.swift; sourceTree = "<group>"; };
+		8833EA932AD2BCCB003064AD /* UserManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagementViewModel.swift; sourceTree = "<group>"; };
 		885B25492A910838007D3A54 /* Trashify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trashify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885B254C2A910838007D3A54 /* TrashifyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashifyApp.swift; sourceTree = "<group>"; };
 		885B254E2A910838007D3A54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,7 +73,7 @@
 		885B256A2A911133007D3A54 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		885B256C2A911C58007D3A54 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		885B256E2A911C84007D3A54 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		885B25742A912960007D3A54 /* LoginPromoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPromoView.swift; sourceTree = "<group>"; };
+		885B25742A912960007D3A54 /* WelcomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenView.swift; sourceTree = "<group>"; };
 		8864A2582AB5CDE300E9F559 /* LocationSearchActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchActivationView.swift; sourceTree = "<group>"; };
 		8864A25A2AB5CDFF00E9F559 /* LocationSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultCell.swift; sourceTree = "<group>"; };
 		8864A25C2AB5CE1300E9F559 /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
@@ -77,13 +81,17 @@
 		8864A2612AB5CEE800E9F559 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		88755D992AD5A9F700D43C85 /* DarkModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkModeManager.swift; sourceTree = "<group>"; };
 		888131512ADBE75A00980E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		888131542ADBF9E100980E34 /* AddTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagsView.swift; sourceTree = "<group>"; };
 		888131582ADC059100980E34 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8883659E2AACB23000B835C5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = SOURCE_ROOT; };
 		88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = SOURCE_ROOT; };
 		E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTagsViewModel.swift; sourceTree = "<group>"; };
 		E04736022AF6E8B300EF364F /* TrashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashService.swift; sourceTree = "<group>"; };
+		E037849E2AE844CD00A49BB7 /* ImageClassificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationService.swift; sourceTree = "<group>"; };
+		E089D8BB2AEAC99400DE9748 /* TrashWizardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashWizardViewModel.swift; sourceTree = "<group>"; };
+		E089D8BD2AEAC9A700DE9748 /* TrashWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashWizardView.swift; sourceTree = "<group>"; };
+		E089D8C02AEAE55500DE9748 /* TrashClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashClassifier.swift; sourceTree = "<group>"; };
+		E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = TrashImageClassificationModel.mlpackage; path = ../../../TrashImageClassificationModel.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +108,7 @@
 		881FDA182AD1622600363234 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8833EA932AD2BCCB003064AD /* PersonTabViewModel.swift */,
+				8833EA932AD2BCCB003064AD /* UserManagementViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -108,25 +116,25 @@
 		882F15B62AD5D92A008D6319 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
-				882F15B72AD5D949008D6319 /* SplashScreenView.swift */,
+				E089D8C52AED55F400DE9748 /* Views */,
 			);
 			path = SplashScreen;
 			sourceTree = "<group>";
 		};
-		883145922AB4DA8000F6A15B /* PersonTab */ = {
+		883145922AB4DA8000F6A15B /* UserManagement */ = {
 			isa = PBXGroup;
 			children = (
 				881FDA182AD1622600363234 /* ViewModel */,
 				883145932AB4DA9300F6A15B /* Views */,
 			);
-			path = PersonTab;
+			path = UserManagement;
 			sourceTree = "<group>";
 		};
 		883145932AB4DA9300F6A15B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				883145942AB4DAAC00F6A15B /* PersonTabView.swift */,
-				881FDA1B2AD1B94D00363234 /* PersonHeaderView.swift */,
+				883145942AB4DAAC00F6A15B /* UserManagementView.swift */,
+				881FDA1B2AD1B94D00363234 /* UserManagementHeaderView.swift */,
 				881FDA1D2AD1B96200363234 /* UserDataView.swift */,
 				881FDA1F2AD1B97600363234 /* AppSettingsView.swift */,
 				881FDA212AD1B98800363234 /* SignOutView.swift */,
@@ -186,6 +194,8 @@
 		885B254B2A910838007D3A54 /* Trashify */ = {
 			isa = PBXGroup;
 			children = (
+				E089D8BF2AEAE52500DE9748 /* Classifiers */,
+				E037849B2AE8428E00A49BB7 /* Models */,
 				888131512ADBE75A00980E34 /* Info.plist */,
 				8864A2602AB5CED200E9F559 /* Managers */,
 				885B25672A9110E1007D3A54 /* Helpers */,
@@ -212,6 +222,7 @@
 			children = (
 				885B256A2A911133007D3A54 /* AuthenticationService.swift */,
 				E04736022AF6E8B300EF364F /* TrashService.swift */,
+				E037849E2AE844CD00A49BB7 /* ImageClassificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -219,14 +230,14 @@
 		885B255C2A9109C5007D3A54 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				888131522ADBF9B400980E34 /* AddTags */,
+				E089D8B82AEAC8B500DE9748 /* TrashWizard */,
 				882F15B62AD5D92A008D6319 /* SplashScreen */,
 				88E269212AB5C07500EDA486 /* LocationSearch */,
 				883145962AB4E54600F6A15B /* ContentAfterLoggedIn */,
-				883145922AB4DA8000F6A15B /* PersonTab */,
+				883145922AB4DA8000F6A15B /* UserManagement */,
 				8883659C2AACB21500B835C5 /* Home */,
 				8832A4012AAC9B3C00FC348C /* Navigation */,
-				885B25732A912945007D3A54 /* LoginPromo */,
+				885B25732A912945007D3A54 /* WelcomeScreen */,
 				885B255E2A910BAD007D3A54 /* Authentication */,
 			);
 			path = Core;
@@ -270,12 +281,12 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		885B25732A912945007D3A54 /* LoginPromo */ = {
+		885B25732A912945007D3A54 /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				885B25742A912960007D3A54 /* LoginPromoView.swift */,
+				E089D8C42AED55C600DE9748 /* Views */,
 			);
-			path = LoginPromo;
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		8864A2572AB5CDA800E9F559 /* Views */ = {
@@ -296,22 +307,6 @@
 				8864A2612AB5CEE800E9F559 /* LocationManager.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		888131522ADBF9B400980E34 /* AddTags */ = {
-			isa = PBXGroup;
-			children = (
-				888131532ADBF9BF00980E34 /* Views */,
-			);
-			path = AddTags;
-			sourceTree = "<group>";
-		};
-		888131532ADBF9BF00980E34 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				888131542ADBF9E100980E34 /* AddTagsView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		8883659C2AACB21500B835C5 /* Home */ = {
@@ -355,6 +350,62 @@
 				E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */,
 			);
 			path = ViewModels;
+		};
+		E037849B2AE8428E00A49BB7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E089D8B82AEAC8B500DE9748 /* TrashWizard */ = {
+			isa = PBXGroup;
+			children = (
+				E089D8BA2AEAC98200DE9748 /* Views */,
+				E089D8B92AEAC97900DE9748 /* ViewModel */,
+			);
+			path = TrashWizard;
+			sourceTree = "<group>";
+		};
+		E089D8B92AEAC97900DE9748 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E089D8BB2AEAC99400DE9748 /* TrashWizardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E089D8BA2AEAC98200DE9748 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E089D8BD2AEAC9A700DE9748 /* TrashWizardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E089D8BF2AEAE52500DE9748 /* Classifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E089D8C02AEAE55500DE9748 /* TrashClassifier.swift */,
+			);
+			path = Classifiers;
+			sourceTree = "<group>";
+		};
+		E089D8C42AED55C600DE9748 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				885B25742A912960007D3A54 /* WelcomeScreenView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E089D8C52AED55F400DE9748 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				882F15B72AD5D949008D6319 /* SplashScreenView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,35 +480,39 @@
 			files = (
 				E04736032AF6E8B300EF364F /* TrashService.swift in Sources */,
 				885B25662A910D44007D3A54 /* LoginViewModel.swift in Sources */,
-				888131552ADBF9E100980E34 /* AddTagsView.swift in Sources */,
 				885B25622A910C21007D3A54 /* LoginView.swift in Sources */,
-				885B25752A912960007D3A54 /* LoginPromoView.swift in Sources */,
+				885B25752A912960007D3A54 /* WelcomeScreenView.swift in Sources */,
 				881FDA202AD1B97600363234 /* AppSettingsView.swift in Sources */,
 				881FDA242AD1B99500363234 /* EditSheetView.swift in Sources */,
 				88E269262AB5CC2A00EDA486 /* LocationSearchViewModel.swift in Sources */,
 				8864A25F2AB5CE2800E9F559 /* LocationSearchViewActionButton.swift in Sources */,
-				883145952AB4DAAC00F6A15B /* PersonTabView.swift in Sources */,
+				883145952AB4DAAC00F6A15B /* UserManagementView.swift in Sources */,
 				885B256D2A911C58007D3A54 /* RegisterViewModel.swift in Sources */,
 				885B254F2A910838007D3A54 /* ContentView.swift in Sources */,
-				8833EA942AD2BCCB003064AD /* PersonTabViewModel.swift in Sources */,
+				8833EA942AD2BCCB003064AD /* UserManagementViewModel.swift in Sources */,
 				8864A25D2AB5CE1300E9F559 /* LocationSearchView.swift in Sources */,
 				888131592ADC059100980E34 /* ImagePicker.swift in Sources */,
 				8864A25B2AB5CDFF00E9F559 /* LocationSearchResultCell.swift in Sources */,
 				881FDA1E2AD1B96200363234 /* UserDataView.swift in Sources */,
 				8883659F2AACB23000B835C5 /* HomeView.swift in Sources */,
 				E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */,
+				E089D8C32AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage in Sources */,
 				885B256B2A911133007D3A54 /* AuthenticationService.swift in Sources */,
 				8864A2622AB5CEE800E9F559 /* LocationManager.swift in Sources */,
+				E089D8BC2AEAC99400DE9748 /* TrashWizardViewModel.swift in Sources */,
+				E089D8BE2AEAC9A700DE9748 /* TrashWizardView.swift in Sources */,
 				882F15B82AD5D949008D6319 /* SplashScreenView.swift in Sources */,
 				8809D55F2AD06F6F00A2B5B4 /* CornerRoundingHelper.swift in Sources */,
 				885B256F2A911C84007D3A54 /* RegisterView.swift in Sources */,
 				883145992AB4E56900F6A15B /* ContentAfterLoggedInView.swift in Sources */,
 				88E269202AB5C01C00EDA486 /* MapViewRepresentable.swift in Sources */,
+				E089D8C12AEAE55500DE9748 /* TrashClassifier.swift in Sources */,
 				8832A4042AAC9E0000FC348C /* BottomNavigationView.swift in Sources */,
 				8864A2592AB5CDE300E9F559 /* LocationSearchActivationView.swift in Sources */,
-				881FDA1C2AD1B94D00363234 /* PersonHeaderView.swift in Sources */,
+				881FDA1C2AD1B94D00363234 /* UserManagementHeaderView.swift in Sources */,
 				8815E09F2AC07EA2003E2EAE /* AppColors.swift in Sources */,
 				885B25692A9110F9007D3A54 /* KeychainHelper.swift in Sources */,
+				E037849F2AE844CD00A49BB7 /* ImageClassificationService.swift in Sources */,
 				88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */,
 				885B254D2A910838007D3A54 /* TrashifyApp.swift in Sources */,
 				881FDA222AD1B98800363234 /* SignOutView.swift in Sources */,

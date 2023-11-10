@@ -18,7 +18,7 @@ struct ContentAfterLoggedInView: View {
                 HomeView()
                     .edgesIgnoringSafeArea(.bottom)
             } else if selectedTab == .person {
-                PersonTabView(selectedTab: $selectedTab)
+                UserManagementView(selectedTab: $selectedTab)
             }
 
             VStack {
@@ -27,7 +27,7 @@ struct ContentAfterLoggedInView: View {
             }
         }
         .sheet(isPresented: $isPlusSheetPresented) {
-            AddTagsView()
+            TrashWizardView()
                 .environmentObject(darkModeManager)
         }
     }

@@ -11,13 +11,14 @@ import SwiftUI
 struct TrashifyApp: App {
     @StateObject var loginViewModel = LoginViewModel()
     @StateObject var locationViewModel = LocationSearchViewModel()
-    @StateObject var personTabViewModel = PersonTabViewModel()
     @StateObject var trashTagsViewModel = TrashTagsViewModel()
+    @StateObject var userManagementViewModel = UserManagementViewModel()
     @StateObject var darkModeManager = DarkModeManager()
+    
     
     var body: some Scene {
         WindowGroup {
-            SplashScreenView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(personTabViewModel).environmentObject(trashTagsViewModel).environmentObject(darkModeManager)
+            SplashScreenView().environmentObject(locationViewModel).environmentObject(loginViewModel).environmentObject(userManagementViewModel).environmentObject(trashTagsViewModel).environmentObject(darkModeManager)
         }
     }
 }

@@ -18,7 +18,7 @@ struct ContentView: View {
             if(isLoggedIn) {
                 ContentAfterLoggedInView()
             } else {
-                LoginPromoView(isLoggedIn: $isLoggedIn)
+                WelcomeScreenView(isLoggedIn: $isLoggedIn)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

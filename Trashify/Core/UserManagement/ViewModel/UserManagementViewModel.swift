@@ -1,5 +1,5 @@
 //
-//  PersonTabViewModel.swift
+//  UserManagementViewModel.swift
 //  Trashify
 //
 //  Created by Marek Gerszendorf on 08/10/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class PersonTabViewModel: ObservableObject {
+class UserManagementViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var username: String = ""
     @Published var newEmail: String = ""

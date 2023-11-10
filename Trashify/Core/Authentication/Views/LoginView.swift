@@ -15,91 +15,109 @@ struct LoginView: View {
     @State private var alertMessage = ""
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Welcome Back! 👋")
+        VStack(alignment: .leading, spacing: 15, content: {
+            // Header
+            VStack(alignment: .leading) {
+                Text("Trashify Welcomes You Back 🌱")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
-                
-                Text("Hello again, you've been missed!")
+                Text("Together, let's keep making a difference!")
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
-            .padding(.bottom, 30)
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
+            .padding(.bottom, 15)
             
-            VStack(alignment: .leading) {
+            // Email field
+            HStack {
                 Text("Email")
                     .font(.headline)
-                TextField("Enter email", text: $loginViewModel.email)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .autocapitalization(.none)
-                    .padding(.bottom, 15)
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
+            HStack {
+                TextField("Enter email", text: $loginViewModel.email).keyboardType(.emailAddress).autocapitalization(.none).frame(height: 50).padding(.horizontal, 20).overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                                .stroke(AppColors.darkerGreen, lineWidth: 3)
+                )
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            // Password field
+            HStack {
                 Text("Password")
                     .font(.headline)
-                SecureField("Enter password", text: $loginViewModel.password)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.bottom, 30)
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        Task {
-                            let result = await loginViewModel.login()
-                            switch result {
-                            case .success(_):
-                                isLoggedIn = true
-                            case .failure(let error):
-                                if !isLoggedIn {
-                                    showAlert = true
-                                    alertMessage = error.errorDescription ?? "Unknown Error"
-                                }
-                            }
-                            loginResult = result
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
+            .padding(.horizontal)
+            HStack {
+                SecureField("Enter password", text: $loginViewModel.password).autocapitalization(.none).frame(height: 50).padding(.horizontal, 20).overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                                .stroke(AppColors.darkerGreen, lineWidth: 3)
+                )
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .cornerRadius(10)
+            .padding(.horizontal)
+            
+            // Login button
+            Button("Login") {
+                Task {
+                    let result = await loginViewModel.login()
+                    switch result {
+                    case .success(_):
+                        isLoggedIn = true
+                    case .failure(let error):
+                        if !isLoggedIn {
+                            showAlert = true
+                            alertMessage = error.errorDescription ?? "Unknown Error"
                         }
-                    }) {
-                        Text("Login")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 220, height: 60)
-                            .background(AppColors.darkerGreen)
-                            .cornerRadius(15.0)
                     }
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Error"),
-                              message: Text(alertMessage),
-                              dismissButton: .default(Text("OK"), action: {
+                    loginResult = result
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .fontWeight(.bold)
+            .background(AppColors.darkerGreen)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .padding(.top, 20)
+            .padding(.horizontal)
+            .shadow(color: AppColors.darkerGreen.opacity(0.2), radius: 10, x: 0, y: 10)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Error"),
+                        message: Text(alertMessage),
+                        dismissButton: .default(Text("OK"), action: {
                             showAlert = false
                         })
-                        )
-                    }
-                    Spacer()
-                }
-                .padding()
+                )
             }
-            
-            HStack {
-                Spacer()
-                HStack {
-                    Text("Don't have an account?")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                    NavigationLink(destination: RegisterView(isLoggedIn: $isLoggedIn)) {
-                        Text("Register")
-                            .font(.footnote)
-                            .foregroundColor(AppColors.darkerGreen)
-                            .fontWeight(.semibold)
-                    }
-                }
-                .padding(.bottom, 20)
-                Spacer()
-            }
-            
-            Spacer()
-        }
-        .padding()
+        })
+        .frame(maxHeight: .infinity, alignment: .center)
+        .padding(.top, 25)
         .navigationBarHidden(true)
+        
+        // Registration navigation footer
+        VStack(alignment: .trailing) {
+            HStack(alignment: .center) {
+                Text("Don't have an account?")
+                        .foregroundColor(.gray)
+                        .font(.system(size: 15))
+
+                NavigationLink(destination: RegisterView(isLoggedIn: $isLoggedIn)) {
+                    Text("Register")
+                            .foregroundColor(AppColors.darkerGreen)
+                            .font(.system(size: 15))
+                }
+            }
+            .padding(.bottom, 20)
+        }
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct UserDataView: View {
     @Binding var isEditUsernamePresented: Bool
     @Binding var isEditEmailPresented: Bool
-    @EnvironmentObject var personTabViewModel: PersonTabViewModel
+    @EnvironmentObject var userManagementViewModel: UserManagementViewModel
     @EnvironmentObject var darkModeManager: DarkModeManager
     
     var body: some View {
@@ -30,19 +30,19 @@ struct UserDataView: View {
                 HStack {
                     Image(systemName: "person")
                         .padding(.trailing, 5)
-                    if personTabViewModel.username.isEmpty {
+                    if userManagementViewModel.username.isEmpty {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .black))
                             .padding(.bottom, 50)
                     } else {
-                        Text(personTabViewModel.username)
+                        Text(userManagementViewModel.username)
                             .foregroundColor(Color.primary)
                     }
                 }
                 Spacer()
                 Button(action: {
-                    personTabViewModel.errorMessage = ""
-                    personTabViewModel.newUsername = ""
+                    userManagementViewModel.errorMessage = ""
+                    userManagementViewModel.newUsername = ""
                     isEditUsernamePresented = true
                 }) {
                     Text("Edit")
@@ -56,19 +56,19 @@ struct UserDataView: View {
                 HStack {
                     Image(systemName: "envelope")
                         .accentColor(.black)
-                    if personTabViewModel.email.isEmpty {
+                    if userManagementViewModel.email.isEmpty {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle(tint: .black))
                             .padding(.bottom, 50)
                     } else {
-                        Text(personTabViewModel.email)
+                        Text(userManagementViewModel.email)
                             .accentColor(Color.primary)
                     }
                 }
                 Spacer()
                 Button(action: {
-                    personTabViewModel.errorMessage = ""
-                    personTabViewModel.newEmail = ""
+                    userManagementViewModel.errorMessage = ""
+                    userManagementViewModel.newEmail = ""
                     isEditEmailPresented = true
                 }) {
                     Text("Edit")
@@ -81,7 +81,7 @@ struct UserDataView: View {
         }
         .background(darkModeManager.isDarkMode ? AppColors.darkGray : Color.white)
         .cornerRadius(20)
-        .onAppear(perform: personTabViewModel.fetchUserData)
+        .onAppear(perform: userManagementViewModel.fetchUserData)
     }
 }
 
