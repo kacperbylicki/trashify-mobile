@@ -207,11 +207,10 @@ struct SelectedImageView: View {
             .background(.red)
             .foregroundColor(.white)
             .cornerRadius(10)
-            .padding(.vertical, TrashWizardConstants.padding)
+            .padding(.top, TrashWizardConstants.padding)
             .padding(.horizontal)
             .shadow(color: AppColors.darkerGreen.opacity(0.2), radius: 10, x: 0, y: 10)
         }
-        .padding(.bottom, 4 * TrashWizardConstants.padding)
         .padding(.horizontal)
         .frame(width: UIScreen.main.bounds.width - 64, height: responsiveSize)
         
