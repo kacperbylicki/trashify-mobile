@@ -22,7 +22,7 @@ struct LoginView: View {
     @State private var isResendVerificationPresented = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 15, content: {
+        VStack(alignment: .leading, spacing: 10, content: {
             // Header
             VStack(alignment: .leading) {
                 Text("Trashify Welcomes You Back 🌱")
@@ -71,39 +71,38 @@ struct LoginView: View {
             .font(.system(size: 15))
             .cornerRadius(10)
             .padding(.horizontal)
-                HStack{
-                    Spacer()
-                    Text("Forgot password?")
+            
+            // Forgot Password
+            HStack {
+                Spacer()
+                Text("Forgot password?")
+                    .foregroundColor(AppColors.darkerGreen)
+                    .underline()
+                    .onTapGesture {
+                        isResetPasswordPresented = true
+                    }
+            }
+            .frame(width: UIScreen.main.bounds.width - 64, height: 50)
+            .font(.system(size: 15))
+            .padding(.horizontal)
+
+            // Conditional 'Email not confirmed' section
+            if alertMessage == "Email not confirmed." {
+                VStack {
+                    Text("Please verify your account. Did not get the email?")
                         .font(.footnote)
                         .foregroundColor(AppColors.darkerGreen)
-                        .underline()
+                    Text("Click here to re-send")
+                        .font(.footnote)
+                        .foregroundColor(AppColors.darkerGreen)
+                        .fontWeight(.semibold)
                         .onTapGesture {
-                            isResetPasswordPresented = true
+                            isResendVerificationPresented = true
                         }
                 }
-                .padding(.bottom, 30)
-                
-                if alertMessage == "Email not confirmed." {
-                    ZStack {
-                        HStack {
-                            Spacer()
-                            VStack {
-                                Text("Please verify your account. Did not get the email?")
-                                    .font(.footnote)
-                                    .foregroundColor(AppColors.darkerGreen)
-                                Text("Click here to re-send")
-                                    .font(.footnote)
-                                    .foregroundColor(AppColors.darkerGreen)
-                                    .fontWeight(.semibold)
-                                    .onTapGesture {
-                                        isResendVerificationPresented = true
-                                    }
-                            }
-                            Spacer()
-                        }
-                    }
-                    .padding(.bottom, 20)
-                }
+                .padding(.horizontal)
+                .padding(.bottom, 20)
+            }
             
             // Login button
             Button("Login") {

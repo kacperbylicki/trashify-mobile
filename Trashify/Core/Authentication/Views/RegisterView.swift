@@ -86,35 +86,6 @@ struct RegisterView: View {
             HStack {
                 Text("Confirm Password")
                     .font(.headline)
-                SecureField("Confirm your password", text: $registerViewModel.confirmPassword)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.bottom, 30)
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        Task {
-                            let result = await registerViewModel.register()
-                            showAlert = true
-                            registerResult = result
-                            registerViewModel.email = ""
-                            registerViewModel.password = ""
-                            registerViewModel.username = ""
-                            registerViewModel.confirmPassword = ""
-                        }
-                    }) {
-                        Text("Register")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 220, height: 60)
-                            .background(AppColors.darkerGreen)
-                            .cornerRadius(15.0)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    
-                    Spacer()
-                }
             }
             .frame(width: UIScreen.main.bounds.width - 64, alignment: .leading)
             .padding(.horizontal)
