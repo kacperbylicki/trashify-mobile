@@ -16,6 +16,14 @@ struct ResetPasswordView: View {
     
     var body: some View {
         VStack {
+            // Header
+            Text("Forgot your password?")
+                .bold()
+                .font(.system(size: 20))
+                .foregroundColor(Color.primary)
+                .padding(.bottom, 20)
+                .padding(.top, 30)
+            
             // Email field
             HStack {
                 TextField("Enter email", text: $resetPasswordViewModel.email).keyboardType(.emailAddress).autocapitalization(.none).frame(height: 50).padding(.horizontal, 20).overlay(
