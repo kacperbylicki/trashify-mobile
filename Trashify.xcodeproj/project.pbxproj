@@ -44,13 +44,14 @@
 		88A713C42AE540EF00603DA5 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A713C32AE540EF00603DA5 /* ResetPasswordView.swift */; };
 		88E269202AB5C01C00EDA486 /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */; };
 		88E269262AB5CC2A00EDA486 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */; };
+		E037849F2AE844CD00A49BB7 /* ImageClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E037849E2AE844CD00A49BB7 /* ImageClassificationService.swift */; };
 		E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */; };
 		E04736032AF6E8B300EF364F /* TrashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04736022AF6E8B300EF364F /* TrashService.swift */; };
-		E037849F2AE844CD00A49BB7 /* ImageClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E037849E2AE844CD00A49BB7 /* ImageClassificationService.swift */; };
 		E089D8BC2AEAC99400DE9748 /* TrashWizardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8BB2AEAC99400DE9748 /* TrashWizardViewModel.swift */; };
 		E089D8BE2AEAC9A700DE9748 /* TrashWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8BD2AEAC9A700DE9748 /* TrashWizardView.swift */; };
 		E089D8C12AEAE55500DE9748 /* TrashClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8C02AEAE55500DE9748 /* TrashClassifier.swift */; };
 		E089D8C32AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */; };
+		E0D0B8CA2B24E668003497FA /* TrashImageClassificationModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E0D0B8C92B24E668003497FA /* TrashImageClassificationModel.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,13 +94,14 @@
 		88A713C32AE540EF00603DA5 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		88E2691F2AB5C01C00EDA486 /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = SOURCE_ROOT; };
 		88E269252AB5CC2A00EDA486 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = SOURCE_ROOT; };
+		E037849E2AE844CD00A49BB7 /* ImageClassificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationService.swift; sourceTree = "<group>"; };
 		E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashTagsViewModel.swift; sourceTree = "<group>"; };
 		E04736022AF6E8B300EF364F /* TrashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashService.swift; sourceTree = "<group>"; };
-		E037849E2AE844CD00A49BB7 /* ImageClassificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationService.swift; sourceTree = "<group>"; };
 		E089D8BB2AEAC99400DE9748 /* TrashWizardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashWizardViewModel.swift; sourceTree = "<group>"; };
 		E089D8BD2AEAC9A700DE9748 /* TrashWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashWizardView.swift; sourceTree = "<group>"; };
 		E089D8C02AEAE55500DE9748 /* TrashClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashClassifier.swift; sourceTree = "<group>"; };
 		E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = TrashImageClassificationModel.mlpackage; path = ../../../TrashImageClassificationModel.mlpackage; sourceTree = "<group>"; };
+		E0D0B8C92B24E668003497FA /* TrashImageClassificationModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TrashImageClassificationModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,14 +341,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		E04735FF2AF6E5B600EF364F /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		88E269212AB5C07500EDA486 /* LocationSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,9 +361,18 @@
 		E037849B2AE8428E00A49BB7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E0D0B8C92B24E668003497FA /* TrashImageClassificationModel.mlmodel */,
 				E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		E04735FF2AF6E5B600EF364F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E04736002AF6E5D900EF364F /* TrashTagsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		E089D8B82AEAC8B500DE9748 /* TrashWizard */ = {
@@ -527,9 +530,10 @@
 				8864A2592AB5CDE300E9F559 /* LocationSearchActivationView.swift in Sources */,
 				881FDA1C2AD1B94D00363234 /* UserManagementHeaderView.swift in Sources */,
 				88269DF92AE55F130050345E /* ResetPasswordViewModel.swift in Sources */,
-				881FDA1C2AD1B94D00363234 /* PersonHeaderView.swift in Sources */,
+				881FDA1C2AD1B94D00363234 /* UserManagementHeaderView.swift in Sources */,
 				8815E09F2AC07EA2003E2EAE /* AppColors.swift in Sources */,
 				885B25692A9110F9007D3A54 /* KeychainHelper.swift in Sources */,
+				E0D0B8CA2B24E668003497FA /* TrashImageClassificationModel.mlmodel in Sources */,
 				E037849F2AE844CD00A49BB7 /* ImageClassificationService.swift in Sources */,
 				88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */,
 				885B254D2A910838007D3A54 /* TrashifyApp.swift in Sources */,
