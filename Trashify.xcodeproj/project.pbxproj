@@ -50,8 +50,8 @@
 		E089D8BC2AEAC99400DE9748 /* TrashWizardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8BB2AEAC99400DE9748 /* TrashWizardViewModel.swift */; };
 		E089D8BE2AEAC9A700DE9748 /* TrashWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8BD2AEAC9A700DE9748 /* TrashWizardView.swift */; };
 		E089D8C12AEAE55500DE9748 /* TrashClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089D8C02AEAE55500DE9748 /* TrashClassifier.swift */; };
-		E089D8C32AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */; };
 		E0D0B8CA2B24E668003497FA /* TrashImageClassificationModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E0D0B8C92B24E668003497FA /* TrashImageClassificationModel.mlmodel */; };
+		E0D0B8CC2B24E95A003497FA /* TrashImageClassificationModel.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = E0D0B8CB2B24E959003497FA /* TrashImageClassificationModel.mlpackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,8 +100,8 @@
 		E089D8BB2AEAC99400DE9748 /* TrashWizardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashWizardViewModel.swift; sourceTree = "<group>"; };
 		E089D8BD2AEAC9A700DE9748 /* TrashWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashWizardView.swift; sourceTree = "<group>"; };
 		E089D8C02AEAE55500DE9748 /* TrashClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashClassifier.swift; sourceTree = "<group>"; };
-		E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; name = TrashImageClassificationModel.mlpackage; path = ../../../TrashImageClassificationModel.mlpackage; sourceTree = "<group>"; };
 		E0D0B8C92B24E668003497FA /* TrashImageClassificationModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TrashImageClassificationModel.mlmodel; sourceTree = "<group>"; };
+		E0D0B8CB2B24E959003497FA /* TrashImageClassificationModel.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = TrashImageClassificationModel.mlpackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,8 +361,8 @@
 		E037849B2AE8428E00A49BB7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E0D0B8CB2B24E959003497FA /* TrashImageClassificationModel.mlpackage */,
 				E0D0B8C92B24E668003497FA /* TrashImageClassificationModel.mlmodel */,
-				E089D8C22AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -515,7 +515,6 @@
 				886971842AE5792A009173EB /* ResendVerificationView.swift in Sources */,
 				8883659F2AACB23000B835C5 /* HomeView.swift in Sources */,
 				E04736012AF6E5D900EF364F /* TrashTagsViewModel.swift in Sources */,
-				E089D8C32AEAE56600DE9748 /* TrashImageClassificationModel.mlpackage in Sources */,
 				885B256B2A911133007D3A54 /* AuthenticationService.swift in Sources */,
 				8864A2622AB5CEE800E9F559 /* LocationManager.swift in Sources */,
 				E089D8BC2AEAC99400DE9748 /* TrashWizardViewModel.swift in Sources */,
@@ -538,6 +537,7 @@
 				88755D9A2AD5A9F700D43C85 /* DarkModeManager.swift in Sources */,
 				885B254D2A910838007D3A54 /* TrashifyApp.swift in Sources */,
 				881FDA222AD1B98800363234 /* SignOutView.swift in Sources */,
+				E0D0B8CC2B24E95A003497FA /* TrashImageClassificationModel.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
